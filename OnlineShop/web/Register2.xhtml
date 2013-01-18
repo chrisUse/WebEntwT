@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <body>
+        <ui:composition template="/templates/onlineshopTemplate.xhtml">
+            <ui:define name="content">
+                <h1>Registrierung - Schritt 2</h1>
+
+                <h:form id="form">
+                    <h:panelGrid id="grid" columns="3">
+
+                        <h:outputLabel value="Passwort" for="password" />
+                        <h:inputSecret id="password" size="30"  binding="#{passwordComponent}" value="#{userBean.password}" required="true">
+                            <f:validateLength minimum="6" />
+                        </h:inputSecret>
+                        <h:message for="password" class="error" />
+
+                        <h:outputLabel value="Passwort bestätigen" for="confirmPassword"/>
+                        <h:inputSecret id="confirmPassword" size="30" required="#{not empty passwordComponent.value}">
+                            <f:validator validatorId="confirmPasswordValidator" />
+                            <f:attribute name="passwordComponent" value="#{passwordComponent}" />
+                        </h:inputSecret>
+                        <h:message for="confirmPassword" class="error"/>
+
+                        <h:commandButton value="Weiter" action="Register3" />
+                    </h:panelGrid>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <body>
+        <ui:composition template="/templates/onlineshopTemplate.xhtml">
+            <ui:define name="content">
+                <h1>Registrierung - Schritt 3</h1>
+
+                <h:form id="form">
+                    <h:panelGrid id="grid" columns="3">
+
+                        <h:outputLabel value="Strasse und Hausnummer" for="street" />
+                        <h:inputText id="street" size="30" value="#{userBean.street}" required="true">
+                            <f:validateLength minimum="2" />
+                        </h:inputText>
+                        <h:message for="street" class="error" />
+
+                        <h:outputLabel value="PLZ und Ort" for="city" />
+                        <h:inputText id="city" size="30" value="#{userBean.city}" required="true">
+                            <f:validateLength minimum="2" />
+                        </h:inputText>
+                        <h:message for="city" class="error" />
+                        
+                        <h:outputLabel value="Wollen Sie Werbung erhalten?" for="wantsCommercials" />
+                        <h:selectBooleanCheckbox id="wantsCommercials" value="#{userBean.wantsCommercials}" >
+                            <f:ajax render="spamPanel" />
+                        </h:selectBooleanCheckbox>
+                        <h:message for="wantsCommercials" class="error" />
+                        
+                        <h:outputText value="" />
+                        <h:panelGrid id="spamPanel" columns="2">
+                            <h:selectBooleanCheckbox id="comElectro" value="#{userBean.comElectro}" rendered="#{userBean.wantsCommercials}" />
+                            <h:outputLabel value="Elektronik" rendered="#{userBean.wantsCommercials}" for="comElectro" />
+                            
+                            <h:selectBooleanCheckbox id="comBooks" value="#{userBean.comBooks}" rendered="#{userBean.wantsCommercials}" />
+                            <h:outputLabel value="Bücher" rendered="#{userBean.wantsCommercials}" for="comBooks" />
+                            
+                            <h:selectBooleanCheckbox id="comMedia" value="#{userBean.comMedia}" rendered="#{userBean.wantsCommercials}" />
+                            <h:outputLabel value="Medien" rendered="#{userBean.wantsCommercials}" for="comMedia" />
+                        </h:panelGrid>
+                        <h:outputText value="" />
+                        
+                        <h:outputLabel value="AGB akzeptieren" for="termsAccepted" />
+                        <h:selectOneRadio id="termsAccepted" value="#{userBean.termsAccepted}" required="true" validator="#{userBean.validateTermsAccepted}">
+                            <f:selectItem itemLabel="Ja" itemValue="#{true}"/>
+                            <f:selectItem itemLabel="Nein" itemValue="#{false}" />
+                        </h:selectOneRadio>
+                        <h:message for="termsAccepted" class="error" />
+
+
+                        <h:commandButton value="Weiter" action="#{userBean.completeRegistration}" />
+                    </h:panelGrid>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

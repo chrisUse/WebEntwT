@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                  xmlns:h="http://java.sun.com/jsf/html"
+                  xmlns:f="http://java.sun.com/jsf/core">
+    <h:outputLabel value="#{msgs.Name}" for="name"/>
+    <h:inputText id="name" size="30" maxlength="40" required="true" value="#{caseProduct.name}">
+      <!-- Check with ajax if the name is present in the datastore -->
+      <f:ajax event="valueChange" render="checkName"/>
+    </h:inputText>
+    <h:outputText id="checkName" value="#{caseProduct.checkNameSet()}" />
+
+    <!-- Price validator for calc the input price with the € or $ in € -->
+    <h:outputLabel value="#{msgs.Price}" for="price"/>
+    <h:inputText id="price" size="30" maxlength="40" required="true" value="#{caseProduct.price}"  >
+      <!-- <f:validateDoubleRange  minimum="0" /> -->
+      <!-- <f:validateRegex pattern="[-+]?[0-9]*\.[0-9]*?" /> -->
+      <f:validator validatorId="calculatePriceValidator" />
+    </h:inputText>
+    <h:outputText id="checkPrice" value=""/>
+
+    <h:outputLabel value="#{msgs.Description}" for="description"/>
+    <h:inputTextarea id="description" cols="34" required="false" value="#{caseProduct.description}" /> 
+    <h:outputText id="checkDescription" value=""/>
+
+    <h:outputLabel value="#{msgs.Manufactorer}" for="manufacturer"/>
+    <h:inputText id="manufacturer" size="30" maxlength="40" required="true" value="#{caseProduct.manufacturer}" />
+    <h:outputText id="checkManufacturer" value=""/>
+
+  </ui:composition>
+</html>
+

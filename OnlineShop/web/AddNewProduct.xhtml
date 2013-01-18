@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+  <body>
+    <ui:composition template="/templates/onlineshopTemplate.xhtml">
+      <ui:define name="content">
+
+
+        <h1> #{msgs.AddNewProductJSF} </h1>
+
+        <c:if test="#{sessionBean.currentUserAdmin}"> 
+          <h:form id="form">
+            <h:selectOneRadio >
+              <f:selectItem id="si1" itemLabel="Kat1" itemValue="11" />
+              <f:selectItem id="si2" itemLabel="Kat2" itemValue="11" />
+              <f:selectItem id="si3" itemLabel="Kat3" itemValue="11" />
+            </h:selectOneRadio>
+            <h:panelGrid id="grid" columns="3">
+
+
+              <ui:include src="ProductInput.xhtml" />
+            </h:panelGrid>
+
+            <h:commandButton value="#{msgs.InsertProduct}" action="#{caseProduct.insertNewProduct}" />
+            <h:message for="price" style="color:red" />
+          </h:form>
+        </c:if>
+
+
+        <c:if test="#{!sessionBean.currentUserAdmin}">
+          <h1> #{msgs.NoAdmin} </h1>
+          <h:form id="form2">
+            <h:commandButton value="#{msgs.LoginLinkLabel}" action="Login.jsp" />
+          </h:form>
+        </c:if> 
+      </ui:define>
+    </ui:composition>
+  </body>
+</html>
