@@ -9,6 +9,7 @@ import exceptions.ProductDoesNotExistException;
 import exceptions.ProductAlreadyExistsException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.NoneScoped;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -17,7 +18,7 @@ import javax.faces.bean.SessionScoped;
  */
 
 @ManagedBean
-@SessionScoped
+@NoneScoped
 public class WishlistBean {
     
     public boolean invalidProducts = false;

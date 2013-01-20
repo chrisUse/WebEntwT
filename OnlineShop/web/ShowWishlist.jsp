@@ -33,10 +33,6 @@
     <body>
         
         <div>
-            <%--
-            <%@include file="templates/header.xhtml" %>
-            <%@include file="templates/menu.xhtml" %>
-            --%>
             <jsp:include page="/templates/header.xhtml" />
             <jsp:include page="/templates/menu.jsp" />
             
@@ -46,7 +42,7 @@
                 
                 <% if(session.getAttribute("error") != null){
                     if(session.getAttribute("error") == "pae") {%>
-                        <p class="error">Der ausgewählte Artikel befand sich bereits auf Ihrer Wunschliste</p> 
+                        <p class="error">Einer oder mehrere der ausgewählten Artikel befanden sich bereits auf Ihrer Wunschliste</p> 
                     <% }
                     else if(session.getAttribute("error") == "pdne") {%>
                        <p class="error">Der ausgewählte Artikel befand sich nicht auf Ihrer Wunschliste</p>

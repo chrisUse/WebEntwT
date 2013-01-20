@@ -1,3 +1,5 @@
+<%@page import="exceptions.ProductAlreadyExistsException"%>
+<%@page import="beans.WishlistBean"%>
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,6 +8,8 @@
 <% // Use of Bean needs a empty standard constructor %>
 <jsp:useBean id="caseProduct" class="beans.caseProduct" scope="page"/>
 <jsp:useBean id="sessionBean" class="beans.SessionBean" scope="session"/>
+<jsp:useBean id="wishlistBean" class="beans.WishlistBean" scope="page" />
+<jsp:useBean id="search" class="beans.Search" scope="application" />
 
 <%@ page language="java" import="java.util.*,java.text.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -27,16 +31,24 @@
           caseProduct.deleteProductByID(Integer.parseInt(t));
         }
       } else if (request.getParameter("AddSelectedProductToWishlist") != null) {
-        // all selected items request.getParameterValues("checked")
+          for(String tProductID :request.getParameterValues("checked")){
+              try{
+                wishlistBean.addProduct(sessionBean.getCurrentUserID(), Integer.parseInt(tProductID));
+              }
+              catch(ProductAlreadyExistsException ex){
+                  session.setAttribute("error", ex.getMessage());
+              }
+          }
+          response.sendRedirect("ShowWishlist.jsp");
       }
       
       
       List<data.Product> allShowedProducts;
       if (request.getParameter("showAPartOfPro") != null) {
-        ///TODO: change the bean
-        allShowedProducts = null;
+        allShowedProducts = search.getProducts();
       } else {
         allShowedProducts = caseProduct.getAllProducts();
+        //allShowedProducts = search.getProducts();
       }
     %>
 

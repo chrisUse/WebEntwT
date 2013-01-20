@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    
+    <body>
+        <ui:composition template="templates/onlineshopTemplate.xhtml">
+            <ui:define name="content">
+                <h1>#{msgs.Search}</h1>
+                <h:form id="form">
+                    <h:panelGrid id="grid" columns="3">
+                        <h:outputLabel value="#{msgs.SearchFor}" for="searchTerm"/>
+                        <h:inputText id="searchTerm" size="30" value="#{search.searchTerm}" required="true">
+                            <f:validateLength minimum="3" />
+                        </h:inputText>
+                        
+                        <h:commandButton value="#{msgs.Search}" action="#{search.searchByTerm()}"/>
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
