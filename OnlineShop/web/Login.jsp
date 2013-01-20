@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 
-<% // Use of Bean needs a empty standard constructor %>
 <jsp:useBean id="sessionBean" class="beans.SessionBean" scope="session"/>
 
 <%@ page language="java" import="java.util.*,java.text.*"%>
