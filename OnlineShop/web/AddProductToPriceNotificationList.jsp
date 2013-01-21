@@ -66,13 +66,36 @@
             session.removeAttribute("error");
         } %>
         
-        <p><%=tProduct.getName()%></p> 
-        <p><%=tProduct.getPrice()%></p>
-        <p><%=tProduct.getDescription()%></p>
-        <p><%=tProduct.getManufacturer()%></p>
-        
         <form name="form" action="AddProductToPriceNotificationList.jsp?productID=<%=request.getParameter("productID")%>" method="post">
-            <input type="number" name="notifyValue"/>
+        <table>
+            <thead>
+                <tr> 
+                    <td align="center"><b>Name</b></td>
+                    <td align="center"><b>Preis</b></td>
+                    <td align="center"><b>Beschreibung</b></td>
+                    <td align="center"><b>Hersteller</b></td>
+                    <td><b>Preisbenachrichtigungslimit</b></td>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td align="center"> <%=tProduct.getName()%> </td>
+                        <td align="center"> <%=tProduct.getPrice()%> </td>
+                        <td align="center"> <%=tProduct.getDescription()%> </td>
+                        <td align="center"> <%=tProduct.getManufacturer()%> </td>
+                        <td align="center"> 
+                                <input type="number" name="notifyValue"/>
+                            
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+                        
+            <input type="submit" value="Senden" />
+        </form>
+                                
+        <form action="ViewProduct.jsp">
+            <input type="submit" value="Abbrechen" />
         </form>
       </div>
     </div>
