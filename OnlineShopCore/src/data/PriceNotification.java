@@ -11,18 +11,24 @@ import java.util.*;
  */
 public class PriceNotification {
 
-    private float price;
+    private int price;
     private int productID;
 
-    public PriceNotification(float nPrice) {
-        price = nPrice;
-    }   
+    public PriceNotification(int productID, int nPrice) {
+        this.price = nPrice;
+        this.productID = productID;
+    }
+    
+    public PriceNotification(PriceNotification nPriceNotification) {
+        this.price = nPriceNotification.price;
+        this.productID = nPriceNotification.productID;
+    }  
 
     public float getPrice() {
         return price;
     }
 
-    public void setPrice(float nPrice) {
+    public void setPrice(int nPrice) {
         price = nPrice;
     }
     

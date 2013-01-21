@@ -60,6 +60,10 @@ public class User extends StorageData {
         //return new WishList(wishList);
         return wishList;
     }
+    
+    public PriceNotificationList getPriceNotificationList() {
+        return priceNotificationList;
+    }
 
     public void setWishList(WishList wishList) {
         this.wishList = wishList;
