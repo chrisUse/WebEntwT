@@ -4,26 +4,29 @@
     Author     : Danny
 --%>
 
+<jsp:useBean id="sessionBean" class="beans.SessionBean" scope="session"/>
+<jsp:useBean id="cartBean" class="beans.CartBean" scope="session"/>
+
 <%@page import="data.Cart"%>
 <%@page import="data.User"%>
 <%@page import="data.Storage"%>
 <%
     boolean tRemoved        = false;
-    int     tUserID         = Integer.parseInt(request.getParameter("userID")); 
+    int     tUserID         = sessionBean.getCurrentUserID(); //Integer.parseInt(request.getParameter("userID")); 
     int     tProductID      = Integer.parseInt(request.getParameter("productID"));
     User    tCurrentUser    = Storage.getInstance().getUserById(tUserID);
-    Cart    tCart           = tCurrentUser.getCart();
+    //Cart    tCart           = tCurrentUser.getCart();
     
-    tCart.decreaseQuantity(tProductID);
-    int     tNumber         = tCart.getCountOfProduct(tProductID);
+    cartBean.decreaseQuantity(tProductID);
+    int     tNumber         = cartBean.getCountOfProduct(tProductID);
     if(tNumber == 0)
     {
-        tCart.removeProduct(tProductID);
+        cartBean.removeProduct(tProductID);
         tRemoved            = true;
     }
     
-    tCurrentUser.setCart(tCart);
-    Storage.getInstance().setUser(tCurrentUser);
+    //tCurrentUser.setCart(tCart);
+    //Storage.getInstance().setUser(tCurrentUser);
     response.sendRedirect("showCart.jsp?removed="+tRemoved+"&userID="+tUserID);
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
