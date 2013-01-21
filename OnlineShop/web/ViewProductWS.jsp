@@ -48,12 +48,13 @@
       }
       
       
-      List<data.Product> allShowedProducts;
+      List<webservice.Product> allShowedProducts;
       if (request.getParameter("showAPartOfPro") != null) {
         ///TODO: change the bean
         allShowedProducts = null;
       } else {
         allShowedProducts = caseProduct.getAllProductsWS();
+        //allShowedProducts = caseProduct.getAllProducts();
       }
     %>
 
@@ -72,7 +73,7 @@
 
           <form name="outerForm" action="ViewProduct.jsp" method="post">
             <% //counter = 1; %>
-            <% if (allShowedProducts != null) for (data.Product product : allShowedProducts) {%>
+            <% if (allShowedProducts != null) for (webservice.Product product : allShowedProducts) {%>
             <tr>
               <td><input name="checked" type="checkbox" value="<%=product.getId()%>"/></td>
               <td><%=product.getId()%></td>

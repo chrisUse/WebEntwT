@@ -181,7 +181,12 @@ public class caseProduct {
     return data.Storage.getInstance().getAllProducts();
   }
   
-  public List<Product> getAllProductsWS() {
+  public List<webservice.Product> getAllProductsWS() {
+    webservice.WebEntw_Service testWS = new webservice.WebEntw_Service();
+    webservice.WebEntw testWP = testWS.getWebEntwPort();
+    
+    return testWP.products();
+      /*
     webservice.WebEntw_Service testWS = new webservice.WebEntw_Service();
     webservice.WebEntw testWP = testWS.getWebEntwPort();
       
@@ -193,5 +198,6 @@ public class caseProduct {
     }
     
     return np;
+    */
   }
 }
