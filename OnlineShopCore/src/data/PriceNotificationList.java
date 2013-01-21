@@ -11,16 +11,16 @@ import java.util.*;
  */
 public class PriceNotificationList {
     private List<PriceNotification> priceNotifications = new ArrayList<PriceNotification>();
+    //PriceNotification pNotify;
     
     public PriceNotificationList(){
         
-        data.PriceNotification pNotify = new PriceNotification(4, 23); 
-        priceNotifications.add(pNotify);
-        
     }
-    public boolean addNotification(int productID, int price){
-        data.PriceNotification pNotify = new PriceNotification(productID, price); 
-        return priceNotifications.add(pNotify);
+    
+    public void addNotification(int productID, int price) {
+         this.priceNotifications.add(new PriceNotification(productID, price));
+         
+         //return true;
     }
     
     public List<PriceNotification> getPriceNotifications() {

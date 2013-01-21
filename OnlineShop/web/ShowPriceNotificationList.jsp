@@ -59,6 +59,10 @@
                             <% } %>
                         </tbody>
                     </table>
+                    
+                <form action="ViewProduct.jsp">
+                    <input type="submit" value="zur Produktübersicht" />
+                </form>
 
             </div>
         </div>

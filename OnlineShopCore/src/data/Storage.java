@@ -90,6 +90,10 @@ public class Storage {
                 6.18f,
                 "USB, 800dpi, weiß",
                 "Logitech"));
+        
+        addCoupon(new Coupon(
+                "1234",
+                30));
     }
 
     private int addData(DataType type, IStorageData d) throws StorageException {

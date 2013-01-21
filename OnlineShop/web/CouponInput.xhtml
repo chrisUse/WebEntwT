@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+  <body>
+    <ui:composition template="/templates/onlineshopTemplate.xhtml">
+      <ui:define name="content">
+        <h1> #{msgs.couponInput} </h1>
+
+
+          <h:form id="form">
+            <h:panelGrid id="grid" columns="2">
+              
+              <h:inputText id="couponCode" size="30" maxlength="40" value="#{couponBean.couponCode}"/>
+
+              <h:commandButton value="#{msgs.Send}" action="#{couponBean.validateCode()}" />
+            </h:panelGrid>
+            <h:messages errorStyle="color:red" />
+          </h:form>
+
+
+      </ui:define>
+    </ui:composition>
+  </body>
+</html>

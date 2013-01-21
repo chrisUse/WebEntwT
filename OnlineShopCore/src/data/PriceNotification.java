@@ -4,7 +4,6 @@
  */
 package data;
 
-import java.util.*;
 
 /**
  * @author Stephan Stenzel
@@ -24,7 +23,7 @@ public class PriceNotification {
         this.productID = nPriceNotification.productID;
     }  
 
-    public float getPrice() {
+    public int getPrice() {
         return price;
     }
 
