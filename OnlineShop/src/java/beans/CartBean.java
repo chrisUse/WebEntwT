@@ -6,17 +6,26 @@ package beans;
 
 import data.Product;
 import data.ProductInCart;
+import data.Storage;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author danny
  */
+@ManagedBean
+@SessionScoped
 public class CartBean 
 {
     private List<ProductInCart> productsInCart = new ArrayList<ProductInCart>();
 
+    private String  description;
+    private String  name;
+    private float   price;
+    
     public CartBean() {
     }
     
@@ -46,14 +55,19 @@ public class CartBean
         return productsInCart.add(pProduct);
     }
     
-    public boolean addProduct(int pProductId)
+    public void addProduct(int pProductId)
     {
-        return productsInCart.add(new ProductInCart(1, pProductId));
+        productsInCart.add(new ProductInCart(1, pProductId));
     }
     
-    public boolean addProduct(Product pProduct)
+    public void addProduct(String pProductId)
     {
-        return this.addProduct(pProduct.getId());
+        productsInCart.add(new ProductInCart(1, Integer.getInteger(pProductId)));
+    }
+    
+    public void addProduct(Product pProduct)
+    {
+        this.addProduct(pProduct.getId());
     }
     
     public boolean removeProduct(int pProductId)
@@ -116,5 +130,29 @@ public class CartBean
     public void clearCart()
     {
         productsInCart.clear();
+    }
+    
+    public void initializeProduct(int pProductID)
+    {
+        Product tProduct    = Storage.getInstance().getProductById(pProductID);
+        this.description    = tProduct.getDescription();
+        this.name           = tProduct.getName();
+        this.price          = tProduct.getPrice();
+        
+    }
+    
+    public String getName()
+    {
+        return name;
+    }
+    
+    public String getDescription()
+    {
+        return description;
+    }
+    
+    public float getPrice()
+    {
+        return price;
     }
 }
