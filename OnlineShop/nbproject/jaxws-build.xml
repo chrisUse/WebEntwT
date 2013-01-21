@@ -26,21 +26,21 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-WebEntwProduct" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/WebEntwProduct"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebEntwProduct" destdir="${build.generated.dir}/jax-wsCache/WebEntwProduct" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WebEntwProduct/wsdl/localhost_8080/WebService/WebEntwProduct.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/WebService/WebEntwProduct?wsdl" xnocompile="true" xendorsed="true" package="webservice">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WebEntwProduct/wsdl/localhost_8080/WebService/WebEntwProduct.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/WebEntwProduct"/>
+    <target name="wsimport-client-WebEntw" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/WebEntw"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebEntw" destdir="${build.generated.dir}/jax-wsCache/WebEntw" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WebEntw/wsdl/localhost_8080/WebService/WebEntw.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/WebService/WebEntw?wsdl" xnocompile="true" xendorsed="true" package="webservice">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WebEntw/wsdl/localhost_8080/WebService/WebEntw.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/WebEntw"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/WebEntwProduct">
+            <fileset dir="${build.generated.dir}/jax-wsCache/WebEntw">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-WebEntwProduct" depends="-init-project">
+    <target name="wsimport-client-clean-WebEntw" depends="-init-project">
         <delete dir="${build.generated.sources.dir}/jax-ws/webservice"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/WebEntwProduct"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/WebEntw"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-WebEntwProduct"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-WebEntw"/>
 </project>

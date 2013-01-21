@@ -182,8 +182,8 @@ public class caseProduct {
   }
   
   public List<Product> getAllProductsWS() {
-    webservice.WebEntwProduct_Service testWS = new webservice.WebEntwProduct_Service();
-    webservice.WebEntwProduct testWP = testWS.getWebEntwProductPort();
+    webservice.WebEntw_Service testWS = new webservice.WebEntw_Service();
+    webservice.WebEntw testWP = testWS.getWebEntwPort();
       
     List<data.Product> np = new ArrayList<data.Product>();
     
