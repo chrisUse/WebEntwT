@@ -11,13 +11,9 @@
 <%@page import="data.User"%>
 <%@page import="data.Storage"%>
 <%
-    int  tUserID        = sessionBean.getCurrentUserID(); //Integer.parseInt(request.getParameter("userID")); 
+    int  tUserID        = sessionBean.getCurrentUserID(); 
     int  tProductID     = Integer.parseInt(request.getParameter("productID"));
-    User tCurrentUser   = Storage.getInstance().getUserById(tUserID);
-    //Cart tCart          = tCurrentUser.getCart();
-    boolean tRemoved    = cartBean.removeProduct(tProductID);
-    //tCurrentUser.setCart(tCart);
-    //Storage.getInstance().setUser(tCurrentUser);
+    boolean tRemoved    = cartBean.removeProduct(tUserID, tProductID);
     response.sendRedirect("showCart.jsp?removed="+tRemoved+"&userID="+tUserID);
 %>
 

@@ -29,6 +29,18 @@ public class Cart {
         return clone;
     }
     
+    public boolean setProductsInCart(List<ProductInCart> pProductsInCart)
+    {
+        this.productsInCart = new ArrayList<ProductInCart>(pProductsInCart.size());
+        for (ProductInCart item : pProductsInCart) {
+            boolean res = this.productsInCart.add(new ProductInCart(item));
+            if(!res){
+                return false;
+            }
+        }
+        return true;
+    }
+    
     public int getCountOfProduct(int pProductId)
     {
         for(ProductInCart tProduct:productsInCart)

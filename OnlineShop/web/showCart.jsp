@@ -20,7 +20,6 @@
     boolean tIsInCart   = Boolean.parseBoolean(request.getParameter("isInCart"));
     boolean tRemoved    = Boolean.parseBoolean(request.getParameter("removed"));
     int tUserID         = sessionBean.getCurrentUser().getId();
-    //Cart tCart          = Storage.getInstance().getUserById(tUserID).getCart();
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -43,17 +42,14 @@
                         out.print("Product is already in cart.");
                     if(tRemoved)
                         out.print("Product removed.");
-                    //if(tCart.getProductsInCart().size() == 0)
-                    if(cartBean.getProductsInCart().size() == 0)
+                    if(cartBean.getProductsInCart(tUserID).size() == 0)
                         out.print("Your cart is empty.");
                 %>
                 <table border="0">
                     <th>ID</th><th>Name</th><th>Count</th>
-                    <% /*for(int i = 0; i < tCart.getProductsInCart().size(); i++) { 
-                            ProductInCart   tProductIC  = tCart.getProductsInCart().get(i);
-                            Product         tProduct    = Storage.getInstance().getProductById(tProductIC.getId());*/ %>
-                    <% for(int i = 0; i < cartBean.getProductsInCart().size(); i++) { 
-                            ProductInCart   tProductIC  = cartBean.getProductsInCart().get(i);
+                    
+                    <%  for(int i = 0; i < cartBean.getProductsInCart(tUserID).size(); i++) { 
+                            ProductInCart   tProductIC  = cartBean.getProductsInCart(tUserID).get(i);
                             Product         tProduct    = Storage.getInstance().getProductById(tProductIC.getId()); %>
                         <tr>
                             <td><% out.print(tProductIC.getId()); %></td>

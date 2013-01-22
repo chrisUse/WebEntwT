@@ -7,7 +7,6 @@ package beans;
 import data.Product;
 import data.ProductInCart;
 import data.Storage;
-import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -20,116 +19,59 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class CartBean 
 {
-    private List<ProductInCart> productsInCart = new ArrayList<ProductInCart>();
-
+    public boolean  invalidProducts = false;
     private String  description;
     private String  name;
     private float   price;
     
-    public CartBean() {
-    }
-    
-    public CartBean(CartBean c) {
-        this.productsInCart = c.getProductsInCart(); // deep copy
-    }
-
-    public List<ProductInCart> getProductsInCart() {
-        List<ProductInCart> clone = new ArrayList<ProductInCart>(productsInCart.size());
-        for (ProductInCart item : productsInCart) {
-            clone.add(new ProductInCart(item));
-        }
-        return clone;
-    }
-    
-    public int getCountOfProduct(int pProductId)
+    public CartBean() 
     {
-        for(ProductInCart tProduct:productsInCart)
-            if(tProduct.getId() == pProductId)
-                return tProduct.getCount();
-        
-        return 0;
     }
     
-    public boolean addProduct(ProductInCart pProduct)
+    public List<ProductInCart> getProductsInCart(int pID) {
+        return data.Storage.getInstance().getUserById(pID).getCart().getProductsInCart();
+    }
+    
+    public int getCountOfProduct(int pID, int pProductId)
     {
-        return productsInCart.add(pProduct);
+        return data.Storage.getInstance().getUserById(pID).getCart().getCountOfProduct(pProductId);
     }
     
-    public void addProduct(int pProductId)
+    public void addProduct(int pId, int pProductId)
     {
-        productsInCart.add(new ProductInCart(1, pProductId));
+        List<ProductInCart> tProductsIC     = this.getProductsInCart(pId); 
+        tProductsIC.add(new ProductInCart(1, pProductId));
+        data.Storage.getInstance().getUserById(pId).getCart().setProductsInCart(tProductsIC);
     }
     
-    public void addProduct(String pProductId)
+    public boolean removeProduct(int pID, int pProductId)
     {
-        productsInCart.add(new ProductInCart(1, Integer.getInteger(pProductId)));
+        return data.Storage.getInstance().getUserById(pID).getCart().removeProduct(pProductId);
     }
     
-    public void addProduct(Product pProduct)
+    public boolean changeQuantity(int pID, int pProductId, int pQuantity)
     {
-        this.addProduct(pProduct.getId());
+        return data.Storage.getInstance().getUserById(pID).getCart().changeQuantity(pProductId, pQuantity);
     }
     
-    public boolean removeProduct(int pProductId)
+    public boolean increaseQuantity(int pID, int pProductId)
     {
-        for(ProductInCart tProduct:productsInCart)
-            if(tProduct.getId() == pProductId)
-                return productsInCart.remove(tProduct);
-        
-        return false;
+        return data.Storage.getInstance().getUserById(pID).getCart().increaseQuantity(pProductId);
     }
     
-    public boolean changeQuantity(int pProductId, int pQuantity){
-         for(ProductInCart product:productsInCart)
-         {
-            if(product.getId() == pProductId)
-            {
-                product.setCount(pQuantity);
-                return true;
-            }
-         }
-         
-         return false;
-    }
-    
-    public boolean increaseQuantity(int pProductId){
-         for(ProductInCart tProduct:productsInCart)
-         {
-            if(tProduct.getId() == pProductId)
-            {
-                tProduct.setCount(tProduct.getCount() + 1);
-                return true;
-            }
-         }
-         return false;
-    }
-    
-    public boolean decreaseQuantity(int pProductId){
-         for(ProductInCart tProduct:productsInCart)
-         {
-            if(tProduct.getId() == pProductId)
-            {
-                if(tProduct.getCount() > 0)
-                    tProduct.setCount(tProduct.getCount() - 1);
-                    
-                return true;
-            }
-         }
-         return false;
-    }
-    
-    public boolean isInCart(int pProductID)
+    public boolean decreaseQuantity(int pID, int pProductId)
     {
-        for(ProductInCart tProductIC : productsInCart)
-            if(tProductIC.getId() == pProductID)
-                return true;
-   
-        return false;
+        return data.Storage.getInstance().getUserById(pID).getCart().decreaseQuantity(pProductId);
     }
     
-    public void clearCart()
+    public boolean isInCart(int pID, int pProductID)
     {
-        productsInCart.clear();
+        return data.Storage.getInstance().getUserById(pID).getCart().isInCart(pProductID);
+    }
+    
+    public void clearCart(int pID)
+    {
+        data.Storage.getInstance().getUserById(pID).getCart().clearCart();
     }
     
     public void initializeProduct(int pProductID)
@@ -137,8 +79,7 @@ public class CartBean
         Product tProduct    = Storage.getInstance().getProductById(pProductID);
         this.description    = tProduct.getDescription();
         this.name           = tProduct.getName();
-        this.price          = tProduct.getPrice();
-        
+        this.price          = tProduct.getPrice();   
     }
     
     public String getName()

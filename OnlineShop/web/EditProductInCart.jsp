@@ -7,6 +7,7 @@
 <%@page import="data.Product"%>
 <%@page import="data.ProductInCart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <% // Use of Bean needs a empty standard constructor %>
 <jsp:useBean id="sessionBean" class="beans.SessionBean" scope="session"/>
 <jsp:useBean id="cartBean" class="beans.CartBean" scope="session"/>
@@ -20,7 +21,6 @@
         
     int tProductID      = Integer.parseInt(request.getParameter("productID"));
     int tUserID         = Integer.parseInt(request.getParameter("userID"));
-    //Cart tCart          = Storage.getInstance().getUserById(tUserID).getCart();
 %>
 
 <!DOCTYPE html>
@@ -39,7 +39,7 @@
             <div id="content" class="left_content">
                 <table border="0">
                     <%
-                        int tQuantity       = cartBean.getCountOfProduct(tProductID);
+                        int tQuantity       = cartBean.getCountOfProduct(tUserID, tProductID);
                         Product tProduct    = Storage.getInstance().getProductById(tProductID);
                     %>         
                     <tr><td>Name:</td></tr>

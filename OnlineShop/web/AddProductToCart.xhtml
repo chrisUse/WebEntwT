@@ -13,8 +13,8 @@
             #{cartBean.initializeProduct(param['productID'])}  
                 <h:form id="form">        
                     <c:choose>
-                        <c:when test="#{!cartBean.isInCart(param['productID'])}">
-                            #{cartBean.addProduct(param['productID'])}
+                        <c:when test="#{!cartBean.isInCart(sessionBean.getCurrentUserID(), param['productID'])}">
+                            #{cartBean.addProduct(sessionBean.getCurrentUserID(), param['productID'])}
                             <h1> #{msgs.ProductInCart} </h1>
                         </c:when>
                         <c:otherwise>
