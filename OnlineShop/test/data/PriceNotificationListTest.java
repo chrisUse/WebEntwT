@@ -51,7 +51,7 @@ public class PriceNotificationListTest {
     public void testAddNotification() {
         System.out.println("addNotification");
         boolean testResult = false;
-        instance.addNotification(refProductID, refPrice);
+        boolean test = instance.addNotification(refProductID, refPrice);
         testList = instance.getPriceNotifications();
         for(PriceNotification item : testList) {
             if(item.getProductID() == refProductID){

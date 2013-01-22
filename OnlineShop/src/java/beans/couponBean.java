@@ -29,9 +29,10 @@ public class couponBean {
     }
     
     public String validateCode() {
-        if( data.Storage.getInstance().getCouponByCode(couponCode) != null){
-            return "ViewProduct.jsp";
+        if( data.Storage.getInstance().getCouponByCode(couponCode)){
+            data.Storage.getInstance().deleteCouponByCode(couponCode);
+            return "CouponAccept.jsp";
         }
-        return "ViewProduct.jsp";
+        return "CouponDenied.jsp";
     }
 }

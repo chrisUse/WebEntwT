@@ -92,7 +92,7 @@ public class Storage {
                 "Logitech"));
         
         addCoupon(new Coupon(
-                "1234",
+                "12345",
                 30));
     }
 
@@ -183,10 +183,13 @@ public class Storage {
         }
     }
 
-    public Coupon getCouponByCode(String code) {
-        synchronized (Storage.class) {
-            return (Coupon) this.coupons.get(code).getCopy();
-        }
+    public boolean getCouponByCode(String code) {
+        //synchronized (Storage.class) {
+            if((Coupon) this.coupons.get(code) == null)
+                return false;
+            
+            return true;
+        //}
     }
 
     public void deleteCouponByCode(String code) {
