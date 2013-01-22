@@ -6,6 +6,7 @@
 
 <% // Use of Bean needs a empty standard constructor %>
 <jsp:useBean id="sessionBean" class="beans.SessionBean" scope="session"/>
+<jsp:useBean id="cartBean" class="beans.CartBean" scope="session"/>
 
 <%@page import="data.Cart"%>
 <%@page import="data.User"%>
@@ -18,14 +19,14 @@
     int     tUserID         = sessionBean.getCurrentUser().getId();   
     int     tProductID      = Integer.parseInt(request.getParameter("productID"));
     User    tCurrentUser    = Storage.getInstance().getUserById(tUserID);
-    Cart    tCart           = tCurrentUser.getCart();
+    //Cart    tCart           = tCurrentUser.getCart();
     
-    if(!tCart.isInCart(tProductID))
-        tCart.addProduct(Storage.getInstance().getProductById(tProductID));
+    if(!cartBean.isInCart(tProductID))
+        cartBean.addProduct(Storage.getInstance().getProductById(tProductID));
     else
         tIsInCart   = true;
 
-    tCurrentUser.setCart(tCart);
+    //tCurrentUser.setCart(tCart);
     Storage.getInstance().setUser(tCurrentUser);
     response.sendRedirect("showCart.jsp?isInCart="+tIsInCart+"&userID="+tUserID);
 %>
