@@ -20,14 +20,24 @@
             
             <div id="content" class="left_content">
                 <h1> Coupon-Code akzeptiert! </h1>
-            </div>
+                
+                <p> Der eingegebene Coupon-Code wurde akzeptiert! </p>
             
-            <form action="CouponInput.xhtml">
-                    <input type="submit" value="weitere Coupons eingeben" />
-            </form>
-            <form action="ViewProduct.jsp">
-                    <input type="submit" value="zur Produktübersicht" />
-            </form>
+                <table>
+                    <tr>
+                        <td>
+                            <form action="CouponInput.xhtml">
+                                    <input type="submit" value="Neuen Coupon-Code eingeben" />
+                            </form>
+                        </td>
+                        <td>
+                            <form action="ViewProduct.jsp">
+                                    <input type="submit" value="zur Produktübersicht" />
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </body>
 </html>

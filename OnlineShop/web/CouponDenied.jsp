@@ -20,12 +20,24 @@
             
             <div id="content" class="left_content">
                 <h1> Coupon-Code verweigert! </h1>
-                <form action="CouponInput.xhtml">
-                        <input type="submit" value="zurück zur Couponeingabe" />
-                </form>
-                <form action="ViewProduct.jsp">
-                        <input type="submit" value="zur Produktübersicht" />
-                </form>
+                
+                <p> Der eingegebene Coupon-Code wurde verweigert! </p>
+                <p> Bitte geben Sie einen neuen Code ein. </p>
+                
+                <table>
+                    <tr>
+                        <td>
+                            <form action="CouponInput.xhtml">
+                                    <input type="submit" value="zurück zur Couponeingabe" />
+                            </form>
+                        </td>
+                        <td>
+                            <form action="ViewProduct.jsp">
+                                    <input type="submit" value="zur Produktübersicht" />
+                            </form>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </body>

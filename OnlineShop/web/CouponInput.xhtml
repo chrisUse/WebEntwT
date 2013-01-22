@@ -10,12 +10,17 @@
     <ui:composition template="/templates/onlineshopTemplate.xhtml">
       <ui:define name="content">
         <h1> #{msgs.couponInput} </h1>
+        
+        <p>Bitte geben Sie ihren Coupon-Code ein! (PS: Coupon-Code: 12345)</p>
 
 
           <h:form id="form">
             <h:panelGrid id="grid" columns="2">
               
-              <h:inputText id="couponCode" size="30" maxlength="40" value="#{couponBean.couponCode}"/>
+              
+              <h:inputText id="couponCode" value="#{couponBean.couponCode}" size="5">
+                  <f:validateLength minimum="5" maximum="5"/>
+              </h:inputText>
 
               <h:commandButton value="#{msgs.Send}" action="#{couponBean.validateCode()}" />
             </h:panelGrid>

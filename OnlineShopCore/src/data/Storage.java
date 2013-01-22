@@ -92,7 +92,7 @@ public class Storage {
                 "Logitech"));
         
         addCoupon(new Coupon(
-                "1234",
+                "12345",
                 30));
     }
 
