@@ -181,17 +181,11 @@ public class caseProduct {
     return data.Storage.getInstance().getAllProducts();
   }
   
-  public List<Product> getAllProductsWS() {
+  public List<webservice.Product> getAllProductsWS() {
     webservice.WebEntw_Service testWS = new webservice.WebEntw_Service();
     webservice.WebEntw testWP = testWS.getWebEntwPort();
       
-    List<data.Product> np = new ArrayList<data.Product>();
-    
-    for ( webservice.Product p : testWP.products() ) {
-      data.Product tmpP = new data.Product(p.getName(), p.getPrice(), p.getDescription(), p.getManufacturer());
-      np.add(tmpP);
-    }
-    
-    return np;
+     
+    return testWP.products();
   }
 }
