@@ -10,10 +10,6 @@
 <%
     if(sessionBean.getCurrentUser() == null)
         response.sendRedirect("LoginError.jsp");
-    
-    /*if (request.getParameter("deleteInvalidProducts") != null) {
-        priceNotificationListBean.removeInvalidProducts(sessionBean.getCurrentUserID());
-    }*/
 %>
 
 <%@page language="java" import="java.util.*,java.text.*"%>

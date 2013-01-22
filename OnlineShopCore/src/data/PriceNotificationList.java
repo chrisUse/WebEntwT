@@ -17,8 +17,8 @@ public class PriceNotificationList {
         
     }
     
-    public void addNotification(int productID, int price) {
-         this.priceNotifications.add(new PriceNotification(productID, price));
+    public boolean addNotification(int productID, int price) {
+         return this.priceNotifications.add(new PriceNotification(productID, price));
          
          //return true;
     }
