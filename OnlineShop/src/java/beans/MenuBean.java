@@ -21,6 +21,7 @@ public class MenuBean {
     public MenuBean() {
         menuItems = new ArrayList<MenuItem>();
         menuItems.add(new MenuItem("Login.jsp", "Anmeldung", MenuItemVisibility.ANONYMOUS_USERS_ONLY));
+        menuItems.add(new MenuItem("LoginWS.jsp", "Anmeldung (WS)", MenuItemVisibility.ANONYMOUS_USERS_ONLY));
         menuItems.add(new MenuItem("Register.xhtml", "Registrierung", MenuItemVisibility.ANONYMOUS_USERS_ONLY));
         menuItems.add(new MenuItem("AddNewProduct.xhtml", "New Product JSF", MenuItemVisibility.ADMINS_ONLY));
         menuItems.add(new MenuItem("ViewProductWS.jsp", "Product View JSP WS", MenuItemVisibility.EVERYONE));
