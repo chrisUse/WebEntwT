@@ -13,8 +13,8 @@
       <!-- Check with ajax if the name is present in the datastore -->
       <f:ajax event="valueChange" render="checkName"/>
     </h:inputText>
-    <!-- ### <h:outputText id="checkName" value="#{caseProduct.checkNameSet()}" /> -->
-    <h:outputText id="checkName" value="" />
+    <h:outputText id="checkName" value="#{caseProduct.checkNameSet()}" />
+    <!-- <h:outputText id="checkName" value="" /> -->
 
     <h:outputLabel value="#{msgs.Price}" for="price"/>
     <h:inputText id="price" size="30" maxlength="40" required="true" value="#{caseProduct.priceString}"  >

@@ -112,18 +112,15 @@ public class caseProduct {
     }
 
     public void setName(String name) {
-        if (!isProductExist(name)) {
-            this.name = name;
-        } else {
-            this.nameUsed = "Product exists";
-        }
+        this.name = name;
     }
 
     public String checkNameSet() {
-        if (this.name != null && !this.name.equals("")) {
+        if (isProductExist(this.name)) {
+            return "Product exists";
+        } else {
             return "";
         }
-        return this.nameUsed;
     }
 
     public float getPrice() {
