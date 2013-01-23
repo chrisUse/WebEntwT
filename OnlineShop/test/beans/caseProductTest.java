@@ -41,15 +41,18 @@ public class caseProductTest {
    * Test of isProductExist method, of class caseProduct.
    */
   @Test
-  public void testIsProductExist() {
-    System.out.println("isProductExist");
-    String name = "";
+  public void testIsProductExistFalse() {
+    System.out.println("isProductExist false");
+    String name = "Kindle Fire HD --";
     caseProduct instance = new caseProduct();
-    boolean expResult = false;
-    boolean result = instance.isProductExist(name);
-    assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertFalse(instance.isProductExist(name));
+  }
+  @Test
+  public void testIsProductExistTrue() {
+    System.out.println("isProductExist true");
+    String name = "Kindle Fire HD";
+    caseProduct instance = new caseProduct();
+    assertTrue(instance.isProductExist(name));
   }
 
   /**
@@ -58,16 +61,13 @@ public class caseProductTest {
   @Test
   public void testAddProduct() throws Exception {
     System.out.println("addProduct");
-    String name = "";
-    float price = 0.0F;
-    String description = "";
-    String manufactorer = "";
+    String name = "test1";
+    float price = 1.23F;
+    String description = "test12";
+    String manufactorer = "test123";
     caseProduct instance = new caseProduct();
-    int expResult = 0;
     int result = instance.addProduct(name, price, description, manufactorer);
-    assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertTrue(result > 0);
   }
 
   /**
@@ -76,11 +76,9 @@ public class caseProductTest {
   @Test
   public void testLoadProductByID() {
     System.out.println("loadProductByID");
-    int id = 0;
     caseProduct instance = new caseProduct();
-    instance.loadProductByID(id);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    instance.loadProductByID(1);
+    assertTrue(instance.getAddProductID() > 0);
   }
 
   /**
@@ -91,10 +89,10 @@ public class caseProductTest {
     System.out.println("deleteProduct");
     caseProduct instance = new caseProduct();
     String expResult = "";
+    instance.loadProductByID(1);
     String result = instance.deleteProduct();
-    assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    instance.loadProductByID(1);
+    assertTrue(instance.getAddProductID() > 0);
   }
 
   /**
@@ -104,11 +102,8 @@ public class caseProductTest {
   public void testGetAddProductID() {
     System.out.println("getAddProductID");
     caseProduct instance = new caseProduct();
-    int expResult = 0;
-    int result = instance.getAddProductID();
-    assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    instance.loadProductByID(1);
+    assertTrue(instance.getAddProductID() == 1);
   }
 
   /**
@@ -117,11 +112,9 @@ public class caseProductTest {
   @Test
   public void testSetAddProductID() {
     System.out.println("setAddProductID");
-    int addProductID = 0;
     caseProduct instance = new caseProduct();
-    instance.setAddProductID(addProductID);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    instance.setAddProductID(1);
+    assertTrue(instance.getAddProductID() == 1);
   }
 
   /**
@@ -131,11 +124,10 @@ public class caseProductTest {
   public void testGetName() {
     System.out.println("getName");
     caseProduct instance = new caseProduct();
-    String expResult = "";
+    String expResult = "Bubber";
+    instance.setName(expResult);
     String result = instance.getName();
     assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -144,11 +136,11 @@ public class caseProductTest {
   @Test
   public void testSetName() {
     System.out.println("setName");
-    String name = "";
+    String name = "Bubber123";
     caseProduct instance = new caseProduct();
     instance.setName(name);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    String result = instance.getName();
+    assertEquals(name, result);
   }
 
   /**
@@ -158,11 +150,10 @@ public class caseProductTest {
   public void testGetPrice() {
     System.out.println("getPrice");
     caseProduct instance = new caseProduct();
-    float expResult = 0.0F;
+    float expResult = 1.345F;
+    instance.setPrice(expResult);
     float result = instance.getPrice();
     assertEquals(expResult, result, 0.0);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -172,11 +163,10 @@ public class caseProductTest {
   public void testGetDescription() {
     System.out.println("getDescription");
     caseProduct instance = new caseProduct();
-    String expResult = "";
+    String expResult = "description";
+    instance.setDescription(expResult);
     String result = instance.getDescription();
     assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -186,11 +176,10 @@ public class caseProductTest {
   public void testGetManufacturer() {
     System.out.println("getManufacturer");
     caseProduct instance = new caseProduct();
-    String expResult = "";
+    String expResult = "Manufacturer";
+    instance.setManufacturer(expResult);
     String result = instance.getManufacturer();
     assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -199,11 +188,11 @@ public class caseProductTest {
   @Test
   public void testSetPrice() {
     System.out.println("setPrice");
-    float price = 0.0F;
+    float price = 23.643F;
     caseProduct instance = new caseProduct();
     instance.setPrice(price);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    float result = instance.getPrice();
+    assertEquals(price, result, 0.0);
   }
 
   /**
@@ -212,11 +201,11 @@ public class caseProductTest {
   @Test
   public void testSetDescription() {
     System.out.println("setDescription");
-    String description = "";
+    String description = "description";
     caseProduct instance = new caseProduct();
     instance.setDescription(description);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    String result = instance.getDescription();
+    assertEquals(description, result);
   }
 
   /**
@@ -225,25 +214,27 @@ public class caseProductTest {
   @Test
   public void testSetManufacturer() {
     System.out.println("setManufacturer");
-    String manufacturer = "";
+    String manufacturer = "manufacturer";
     caseProduct instance = new caseProduct();
     instance.setManufacturer(manufacturer);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    String result = instance.getManufacturer();
+    assertEquals(manufacturer, result);
   }
 
   /**
    * Test of insertNewProduct method, of class caseProduct.
    */
   @Test
-  public void testInsertNewProduct() {
+  public void testInsertNewProduct() throws Exception {
     System.out.println("insertNewProduct");
+    String name = "test1";
+    float price = 1.23F;
+    String description = "test12";
+    String manufactorer = "test123";
     caseProduct instance = new caseProduct();
-    String expResult = "";
+    instance.addProduct(name, price, description, manufactorer);
     String result = instance.insertNewProduct();
-    assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertEquals("/ViewProduct.jsp", result);
   }
 
   /**
@@ -253,11 +244,9 @@ public class caseProductTest {
   public void testUpdateProduct() {
     System.out.println("updateProduct");
     caseProduct instance = new caseProduct();
-    String expResult = "";
+    instance.setAddProductID(3);
     String result = instance.updateProduct();
-    assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertEquals("/ViewProduct.jsp", result);
   }
 
   /**
@@ -267,11 +256,8 @@ public class caseProductTest {
   public void testGetAllProducts() {
     System.out.println("getAllProducts");
     caseProduct instance = new caseProduct();
-    List expResult = null;
     List result = instance.getAllProducts();
-    assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertNotNull(result);
   }
 
     /**
@@ -280,13 +266,10 @@ public class caseProductTest {
     @Test
     public void testDeleteProductByID() {
         System.out.println("deleteProductByID");
-        int id = 0;
+        int id = 4;
         caseProduct instance = new caseProduct();
-        boolean expResult = false;
         boolean result = instance.deleteProductByID(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(result);
     }
 
     /**
@@ -296,11 +279,10 @@ public class caseProductTest {
     public void testCheckNameSet() {
         System.out.println("checkNameSet");
         caseProduct instance = new caseProduct();
-        String expResult = "";
+        String expResult = "Dell Latitude ST T11";
+        instance.setName(expResult);
         String result = instance.checkNameSet();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals("Product exists", result);
     }
 
     /**
@@ -310,11 +292,10 @@ public class caseProductTest {
     public void testGetPriceString() {
         System.out.println("getPriceString");
         caseProduct instance = new caseProduct();
-        String expResult = "";
+        String expResult = "1.284 €";
+        instance.setPriceString("1.284 €");
         String result = instance.getPriceString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -323,11 +304,11 @@ public class caseProductTest {
     @Test
     public void testSetPriceString() {
         System.out.println("setPriceString");
-        String pS = "";
+        String pS = "342.884 €";
         caseProduct instance = new caseProduct();
         instance.setPriceString(pS);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String result = instance.getPriceString();
+        assertEquals(pS, result);
     }
 
     /**
@@ -337,10 +318,7 @@ public class caseProductTest {
     public void testGetAllProductsWS() {
         System.out.println("getAllProductsWS");
         caseProduct instance = new caseProduct();
-        List expResult = null;
         List result = instance.getAllProductsWS();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(result);
     }
 }
