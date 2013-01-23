@@ -88,7 +88,8 @@
                                     <option value="AddProductToWishlist.jsp?productID=<%=product.getId()%>"> add to wishlist </option>
                                     <option value="AddProductToCart.xhtml?productID=<%=product.getId()%>"> add to cart </option>
                                     <option value="AddProductToPriceNotificationList.jsp?productID=<%=product.getId()%>"> add to Pricenotificationlist </option>
-
+                                    <option value="ProductDetails.jsp?productID=<%=product.getId()%>"> view product details </option>
+                                    
                                     <% if (sessionBean.getCurrentUser() != null && sessionBean.getCurrentUser().isIsAdmin() == true) {%>
                                     <option value="EditProduct.xhtml?productID=<%=product.getId()%>"> Edit </option>
                                     <option value="DeleteProduct.xhtml?productID=<%=product.getId()%>"> Delete </option>
