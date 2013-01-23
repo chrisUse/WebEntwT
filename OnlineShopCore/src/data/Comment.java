@@ -14,17 +14,39 @@ public class Comment implements Cloneable {
 
     private String name;
     private String text;
-    private java.util.Date date;
-
+    private Date date;
+    
     public Comment(String name, String text, Date date) {
         this.name = name;
         this.text = text;
         this.date = date;
     }
+    
+     public Comment(Comment c) {
+        this(c.getName(), c.getText(), c.getDate());
+    }
 
-    public Comment(Comment c) {
-        this.date = c.date;
-        this.name = c.name;
-        this.text = c.text;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
