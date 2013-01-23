@@ -176,7 +176,9 @@ public class UserBean implements Serializable {
         if (this.name == null || this.password == null || this.mail == null || this.street == null || this.city == null) {
             this.registrationComplete = false;
             FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Es wurden nicht alle Felder ausgefüllt.", null);
-            fc.addMessage(null, fm);
+            if (fc != null) {
+                fc.addMessage(null, fm);
+            }
             
             return "FinalizeRegister";
         }
@@ -185,11 +187,15 @@ public class UserBean implements Serializable {
             Storage.getInstance().addUser(new User(false, this.name, this.password, this.mail, this.street, this.city));
         } catch (DuplicateEntryException ex) {
             FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Diese E-Mail Adresse ist bereits registriert.", null);
-            fc.addMessage("mail", fm);
+            if (fc != null) {
+                fc.addMessage("mail", fm);
+            }
             this.registrationComplete = false;
         } catch (StorageException ex) {
             FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_FATAL, "Unbekannter Fehler.", null);
-            fc.addMessage(null, fm);
+            if (fc != null) {
+                fc.addMessage(null, fm);
+            }
             this.registrationComplete = false;
         }
         /** @todo registrierung leeren **/
