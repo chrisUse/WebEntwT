@@ -15,7 +15,6 @@
     </h:inputText>
     <h:outputText id="checkName" value="#{caseProduct.checkNameSet()}" />
 
-    <!-- Price validator for calc the input price with the € or $ in € -->
     <h:outputLabel value="#{msgs.Price}" for="price"/>
     <h:inputText id="price" size="30" maxlength="40" required="true" value="#{caseProduct.price}"  >
       <!-- <f:validateDoubleRange  minimum="0" /> -->
