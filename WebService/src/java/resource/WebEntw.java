@@ -4,8 +4,10 @@
  */
 package resource;
 
+import data.Product;
 import data.Storage;
 import data.User;
+import exceptions.ProductDoesNotExistException;
 import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -67,5 +69,18 @@ public class WebEntw {
             return "CouponAccept.jsp";
         }
         return "CouponDenied.jsp";
+    }
+    
+    @WebMethod(operationName = "removeProductFromWishlist")
+    public boolean removeProductFromWishlist(@WebParam(name = "userID") int userID, @WebParam(name = "productID") int productID) throws ProductDoesNotExistException {
+        List<Product> tProducts = data.Storage.getInstance().getUserById(userID).getWishList().getProducts();
+        for(Product item : tProducts) {
+            if(item.getId() == productID)
+            {
+                tProducts.remove(item);
+                return data.Storage.getInstance().getUserById(userID).getWishList().setProducts(tProducts);
+            }
+        }
+        throw new ProductDoesNotExistException("pdne");
     }
 }
