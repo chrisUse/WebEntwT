@@ -54,12 +54,20 @@ public class WebEntw {
         return currentUser;
     }
     
-    @WebMethod(operationName = "removeProductToCart")
-    public boolean removeProductToCart(@WebParam(name = "userId") int userId, @WebParam(name = "productId") int productId)
+    @WebMethod(operationName = "removeProductFromCart")
+    public boolean removeProductFromCart(@WebParam(name = "userId") int userId, @WebParam(name = "productId") int productId)
     {
-        User tCurrentU      = Storage.getInstance().getUserById(userId);
-
-        return tCurrentU.getCart().removeProduct(productId);
+        List<data.ProductInCart> tProducts    = Storage.getInstance().getUserById(userId).getCart().getProductsInCart();
+        for(data.ProductInCart tProduct : tProducts)
+        {
+            if(tProduct.getId() == productId)
+            {
+                tProducts.remove(tProduct);
+                return data.Storage.getInstance().getUserById(userId).getCart().setProductsInCart(tProducts);
+            }
+        }
+        
+        return false;
     }
     
     @WebMethod(operationName = "validateCode")

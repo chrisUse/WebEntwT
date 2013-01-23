@@ -21,8 +21,8 @@
     User    tCurrentUser    = Storage.getInstance().getUserById(tUserID);
     //Cart    tCart           = tCurrentUser.getCart();
     
-    if(!cartBean.isInCart(tProductID))
-        cartBean.addProduct(Storage.getInstance().getProductById(tProductID));
+    if(!cartBean.isInCart(tUserID, tProductID))
+        cartBean.addProduct(tUserID, tProductID);
     else
         tIsInCart   = true;
 

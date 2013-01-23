@@ -4,6 +4,12 @@
 <xsd:import namespace="http://resource/" schemaLocation="http://localhost:8080/WebService/WebEntw?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="login">
+<part name="parameters" element="tns:login"/>
+</message>
+<message name="loginResponse">
+<part name="parameters" element="tns:loginResponse"/>
+</message>
 <message name="productWID">
 <part name="parameters" element="tns:productWID"/>
 </message>
@@ -28,19 +34,26 @@
 <message name="helloResponse">
 <part name="parameters" element="tns:helloResponse"/>
 </message>
-<message name="removeProductToCart">
-<part name="parameters" element="tns:removeProductToCart"/>
+<message name="removeProductFromCart">
+<part name="parameters" element="tns:removeProductFromCart"/>
 </message>
-<message name="removeProductToCartResponse">
-<part name="parameters" element="tns:removeProductToCartResponse"/>
+<message name="removeProductFromCartResponse">
+<part name="parameters" element="tns:removeProductFromCartResponse"/>
 </message>
-<message name="login">
-<part name="parameters" element="tns:login"/>
+<message name="removeProductFromWishlist">
+<part name="parameters" element="tns:removeProductFromWishlist"/>
 </message>
-<message name="loginResponse">
-<part name="parameters" element="tns:loginResponse"/>
+<message name="removeProductFromWishlistResponse">
+<part name="parameters" element="tns:removeProductFromWishlistResponse"/>
+</message>
+<message name="ProductDoesNotExistException">
+<part name="fault" element="tns:ProductDoesNotExistException"/>
 </message>
 <portType name="WebEntw">
+<operation name="login">
+<input wsam:Action="http://resource/WebEntw/loginRequest" message="tns:login"/>
+<output wsam:Action="http://resource/WebEntw/loginResponse" message="tns:loginResponse"/>
+</operation>
 <operation name="productWID">
 <input wsam:Action="http://resource/WebEntw/productWIDRequest" message="tns:productWID"/>
 <output wsam:Action="http://resource/WebEntw/productWIDResponse" message="tns:productWIDResponse"/>
@@ -57,17 +70,27 @@
 <input wsam:Action="http://resource/WebEntw/helloRequest" message="tns:hello"/>
 <output wsam:Action="http://resource/WebEntw/helloResponse" message="tns:helloResponse"/>
 </operation>
-<operation name="removeProductToCart">
-<input wsam:Action="http://resource/WebEntw/removeProductToCartRequest" message="tns:removeProductToCart"/>
-<output wsam:Action="http://resource/WebEntw/removeProductToCartResponse" message="tns:removeProductToCartResponse"/>
+<operation name="removeProductFromCart">
+<input wsam:Action="http://resource/WebEntw/removeProductFromCartRequest" message="tns:removeProductFromCart"/>
+<output wsam:Action="http://resource/WebEntw/removeProductFromCartResponse" message="tns:removeProductFromCartResponse"/>
 </operation>
-<operation name="login">
-<input wsam:Action="http://resource/WebEntw/loginRequest" message="tns:login"/>
-<output wsam:Action="http://resource/WebEntw/loginResponse" message="tns:loginResponse"/>
+<operation name="removeProductFromWishlist">
+<input wsam:Action="http://resource/WebEntw/removeProductFromWishlistRequest" message="tns:removeProductFromWishlist"/>
+<output wsam:Action="http://resource/WebEntw/removeProductFromWishlistResponse" message="tns:removeProductFromWishlistResponse"/>
+<fault message="tns:ProductDoesNotExistException" name="ProductDoesNotExistException" wsam:Action="http://resource/WebEntw/removeProductFromWishlist/Fault/ProductDoesNotExistException"/>
 </operation>
 </portType>
 <binding name="WebEntwPortBinding" type="tns:WebEntw">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="login">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="productWID">
 <soap:operation soapAction=""/>
 <input>
@@ -104,7 +127,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="removeProductToCart">
+<operation name="removeProductFromCart">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -113,7 +136,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="login">
+<operation name="removeProductFromWishlist">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -121,6 +144,9 @@
 <output>
 <soap:body use="literal"/>
 </output>
+<fault name="ProductDoesNotExistException">
+<soap:fault name="ProductDoesNotExistException" use="literal"/>
+</fault>
 </operation>
 </binding>
 <service name="WebEntw">

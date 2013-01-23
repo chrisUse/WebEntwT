@@ -77,41 +77,6 @@ public class ProductTest {
     String result = instance.getManufacturer();
     assertEquals(refManufacturer, result);
   }
-
-  /**
-   * Test of getComments method, of class Product.
-   */
-  
-  @Test
-  public void testGetComments() {
-    System.out.println("getComments");
-    
-    /*Comment myComment = new Comment ("TestCommentName","TestCommentText", new Date ());
-    
-    //instance.addComment();
-    
-    List<Comment> expComment = new ArrayList<Comment>();
-    expComment.add(new Comment ("TestCommentName","TestCommentText", new Date ()))
-    //List expResult = null;
-    List result = instance.getComments();
-    assertEquals(expComment.get(0), result.get(0));
-    */ // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
-  }
-  
-  /**
-   * Test of addComment method, of class Product.
-   */
-  
-  @Test
-  public void testAddComment() {
-    System.out.println("addComment");
-    Comment c = null;
-    Product instance = null;
-    //instance.addComment(c);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
-  }
   
   /**
    * Test of getCopy method, of class Product.
