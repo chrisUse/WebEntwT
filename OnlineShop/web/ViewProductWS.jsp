@@ -45,18 +45,18 @@
                         caseProduct.deleteProductByID(Integer.parseInt(t));
                     }
                 }
-            } else if (request.getParameter("AddSelectedProductToWishlist") != null) {
+            }/* else if (request.getParameter("AddSelectedProductToWishlist") != null) {
                 // all selected items request.getParameterValues("checked")
-            }
+            }*/
 
 
             List<webservice.Product> allShowedProducts;
-            if (request.getParameter("showAPartOfPro") != null) {
+            /*if (request.getParameter("showAPartOfPro") != null) {
                 ///TODO: change the bean
                 allShowedProducts = null;
-            } else {
+            } else {*/
                 allShowedProducts = caseProduct.getAllProductsWS();
-            }
+            //}
         %>
 
         <div>
@@ -102,7 +102,7 @@
                         </tr>
                         <% }%>
                         <input type="submit" name="DeleteAllSelected" value="Delete all selected" />
-                        <input type="submit" name="AddSelectedProductToWishlist" value="Add selected Products to wishlist" />
+                        <!--<input type="submit" name="AddSelectedProductToWishlist" value="Add selected Products to wishlist" />-->
                     </form>
                 </table>
                 <% if (sessionBean.getCurrentUser() != null && sessionBean.getCurrentUser().isIsAdmin() == true) {%>

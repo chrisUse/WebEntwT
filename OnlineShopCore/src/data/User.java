@@ -57,7 +57,6 @@ public class User extends StorageData {
     }
 
     public WishList getWishList() {
-        //return new WishList(wishList);
         return wishList;
     }
     

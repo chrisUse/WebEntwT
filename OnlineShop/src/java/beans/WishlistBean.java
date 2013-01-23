@@ -6,11 +6,15 @@ package beans;
 
 import com.sun.xml.internal.ws.api.client.WSPortInfo;
 import data.Product;
+import data.Storage;
 import exceptions.ProductAlreadyExistsException;
 import exceptions.ProductDoesNotExistException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.NoneScoped;
+import webservice.ProductDoesNotExistException_Exception;
 
 /**
  *
@@ -45,6 +49,7 @@ public class WishlistBean {
         
         List<Product> tProducts = data.Storage.getInstance().getUserById(userID).getWishList().getProducts();        
         tProducts.add(data.Storage.getInstance().getProductById(productID));
+
         return data.Storage.getInstance().getUserById(userID).getWishList().setProducts(tProducts);
     }
     
@@ -65,7 +70,11 @@ public class WishlistBean {
         webservice.WebEntw_Service ws = new webservice.WebEntw_Service();
         webservice.WebEntw wsp = ws.getWebEntwPort();
         
-        return wsp.removeProductFromWishlist(userID, productID);
+        try {
+            return wsp.removeProductFromWishlist(userID, productID);
+        } catch (ProductDoesNotExistException_Exception ex) {
+            throw new ProductDoesNotExistException("pdne");
+        }
     }
     
     
