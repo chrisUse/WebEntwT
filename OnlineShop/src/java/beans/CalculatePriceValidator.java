@@ -24,16 +24,12 @@ public class CalculatePriceValidator implements Validator {
       if ( ! ((String) value).equals("") ) {
         String[] splitString = ((String) value).split(" ");
         // Check if the currency present
-        if ( splitString.length != 2 ) {
-          FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Es wurde keine Währung angegeben.", null);
-          throw new ValidatorException(fm);
-        } else {
-          value = splitString[1];
+        if ( splitString.length == 2 )  {
+            if (!splitString[1].equals("€") && !splitString[1].equals("$") ) {
+                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Unbekannte Währung angegeben.", null);
+                throw new ValidatorException(fm);
+            }
         }
-      }/*
-        if (Storage.getInstance().getUserIdByMail((String) value) != null) {
-            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Diese E-Mail Adresse ist bereits registriert.", null);
-            throw new ValidatorException(fm);
-        }*/
+      }
     }
 }

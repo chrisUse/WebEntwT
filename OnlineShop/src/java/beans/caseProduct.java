@@ -140,8 +140,17 @@ public class caseProduct {
     }
 
     public void setPriceString(String pS) {
-        this.priceString = pS;
-        this.price = Float.parseFloat(pS.split(" ")[0]);
+        //this.priceString = pS;
+        //this.price = Float.parseFloat(pS.split(" ")[0]);
+        if (!((String) pS).equals("")) {
+            String[] splitString = ((String) pS).split(" ");
+            if (splitString[1].equals("€")) {
+                this.price = Float.parseFloat(splitString[0]);
+            } else if (splitString[1].equals("$")) {
+                // Umrechnung Doller in Euro
+                this.price = Float.parseFloat(splitString[0]) * 0.75f;
+            }
+        }
     }
 
     public void setPrice(float price) {
