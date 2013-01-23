@@ -17,12 +17,15 @@
     int     tQuantity       = Integer.parseInt(request.getParameter("quantity"));
     User    tCurrentUser    = Storage.getInstance().getUserById(tUserID);
     
-    cartBean.changeQuantity(tUserID, tProductID, tQuantity);
-    if(tQuantity <= 0)
+    if(tQuantity > 0)
+        cartBean.changeQuantity(tUserID, tProductID, tQuantity);
+    if(tQuantity == 0)
     {
         cartBean.removeProduct(tUserID, tProductID);
         tRemoved            = true;
     }
+    if(tQuantity < 0)
+        response.sendRedirect("EditProductInCart.jsp?productID="+tProductID+"&userID="+tUserID+"&valueToSmall=true");
     
     Storage.getInstance().setUser(tCurrentUser);
     response.sendRedirect("showCart.jsp?removed="+tRemoved+"&userID="+tUserID);
