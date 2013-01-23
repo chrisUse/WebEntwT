@@ -273,4 +273,74 @@ public class caseProductTest {
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
   }
+
+    /**
+     * Test of deleteProductByID method, of class caseProduct.
+     */
+    @Test
+    public void testDeleteProductByID() {
+        System.out.println("deleteProductByID");
+        int id = 0;
+        caseProduct instance = new caseProduct();
+        boolean expResult = false;
+        boolean result = instance.deleteProductByID(id);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of checkNameSet method, of class caseProduct.
+     */
+    @Test
+    public void testCheckNameSet() {
+        System.out.println("checkNameSet");
+        caseProduct instance = new caseProduct();
+        String expResult = "";
+        String result = instance.checkNameSet();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getPriceString method, of class caseProduct.
+     */
+    @Test
+    public void testGetPriceString() {
+        System.out.println("getPriceString");
+        caseProduct instance = new caseProduct();
+        String expResult = "";
+        String result = instance.getPriceString();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setPriceString method, of class caseProduct.
+     */
+    @Test
+    public void testSetPriceString() {
+        System.out.println("setPriceString");
+        String pS = "";
+        caseProduct instance = new caseProduct();
+        instance.setPriceString(pS);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getAllProductsWS method, of class caseProduct.
+     */
+    @Test
+    public void testGetAllProductsWS() {
+        System.out.println("getAllProductsWS");
+        caseProduct instance = new caseProduct();
+        List expResult = null;
+        List result = instance.getAllProductsWS();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 }
