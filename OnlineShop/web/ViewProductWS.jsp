@@ -84,7 +84,7 @@
                 <!-- <form name="form"> -->
                 <select name="link" SIZE="1" onchange="window.location.href=this.value;">
                   <option value="AddProductToWishlist.jsp?productID=<%=product.getId()%>"> add to wishlist </option>
-                  <option value="AddProductToCart.jsp?productID=<%=product.getId()%>"> add to cart </option>
+                  <option value="AddProductToCart.xhtml?productID=<%=product.getId()%>"> add to cart </option>
                   <option value="AddProductToPriceNotificationList.jsp?productID=<%=product.getId()%>"> add to Pricenotificationlist </option>
 
                   <% if (sessionBean.getCurrentUser() != null && sessionBean.getCurrentUser().isIsAdmin() == true) {%>

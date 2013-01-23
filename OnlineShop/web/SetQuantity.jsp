@@ -12,21 +12,21 @@
 <%@page import="data.Storage"%>
 <%
     boolean tRemoved        = false;
-    int     tUserID         = sessionBean.getCurrentUserID(); //Integer.parseInt(request.getParameter("userID")); 
+    int     tUserID         = sessionBean.getCurrentUserID(); 
     int     tProductID      = Integer.parseInt(request.getParameter("productID"));
     int     tQuantity       = Integer.parseInt(request.getParameter("quantity"));
     User    tCurrentUser    = Storage.getInstance().getUserById(tUserID);
-    //Cart    tCart           = tCurrentUser.getCart();
     
-    cartBean.changeQuantity(tProductID, tQuantity);
-    int     tNumber         = cartBean.getCountOfProduct(tProductID);
-    if(tQuantity <= 0)
+    if(tQuantity > 0)
+        cartBean.changeQuantity(tUserID, tProductID, tQuantity);
+    if(tQuantity == 0)
     {
-        cartBean.removeProduct(tProductID);
+        cartBean.removeProduct(tUserID, tProductID);
         tRemoved            = true;
     }
+    if(tQuantity < 0)
+        response.sendRedirect("EditProductInCart.jsp?productID="+tProductID+"&userID="+tUserID+"&valueToSmall=true");
     
-    //tCurrentUser.setCart(tCart);
     Storage.getInstance().setUser(tCurrentUser);
     response.sendRedirect("showCart.jsp?removed="+tRemoved+"&userID="+tUserID);
 %>

@@ -4,17 +4,17 @@
 <xsd:import namespace="http://resource/" schemaLocation="http://localhost:8080/WebService/WebEntw?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="hello">
-<part name="parameters" element="tns:hello"/>
-</message>
-<message name="helloResponse">
-<part name="parameters" element="tns:helloResponse"/>
-</message>
 <message name="productWID">
 <part name="parameters" element="tns:productWID"/>
 </message>
 <message name="productWIDResponse">
 <part name="parameters" element="tns:productWIDResponse"/>
+</message>
+<message name="validateCode">
+<part name="parameters" element="tns:validateCode"/>
+</message>
+<message name="validateCodeResponse">
+<part name="parameters" element="tns:validateCodeResponse"/>
 </message>
 <message name="products">
 <part name="parameters" element="tns:products"/>
@@ -22,31 +22,52 @@
 <message name="productsResponse">
 <part name="parameters" element="tns:productsResponse"/>
 </message>
+<message name="hello">
+<part name="parameters" element="tns:hello"/>
+</message>
+<message name="helloResponse">
+<part name="parameters" element="tns:helloResponse"/>
+</message>
+<message name="removeProductToCart">
+<part name="parameters" element="tns:removeProductToCart"/>
+</message>
+<message name="removeProductToCartResponse">
+<part name="parameters" element="tns:removeProductToCartResponse"/>
+</message>
+<message name="login">
+<part name="parameters" element="tns:login"/>
+</message>
+<message name="loginResponse">
+<part name="parameters" element="tns:loginResponse"/>
+</message>
 <portType name="WebEntw">
-<operation name="hello">
-<input wsam:Action="http://resource/WebEntw/helloRequest" message="tns:hello"/>
-<output wsam:Action="http://resource/WebEntw/helloResponse" message="tns:helloResponse"/>
-</operation>
 <operation name="productWID">
 <input wsam:Action="http://resource/WebEntw/productWIDRequest" message="tns:productWID"/>
 <output wsam:Action="http://resource/WebEntw/productWIDResponse" message="tns:productWIDResponse"/>
+</operation>
+<operation name="validateCode">
+<input wsam:Action="http://resource/WebEntw/validateCodeRequest" message="tns:validateCode"/>
+<output wsam:Action="http://resource/WebEntw/validateCodeResponse" message="tns:validateCodeResponse"/>
 </operation>
 <operation name="products">
 <input wsam:Action="http://resource/WebEntw/productsRequest" message="tns:products"/>
 <output wsam:Action="http://resource/WebEntw/productsResponse" message="tns:productsResponse"/>
 </operation>
+<operation name="hello">
+<input wsam:Action="http://resource/WebEntw/helloRequest" message="tns:hello"/>
+<output wsam:Action="http://resource/WebEntw/helloResponse" message="tns:helloResponse"/>
+</operation>
+<operation name="removeProductToCart">
+<input wsam:Action="http://resource/WebEntw/removeProductToCartRequest" message="tns:removeProductToCart"/>
+<output wsam:Action="http://resource/WebEntw/removeProductToCartResponse" message="tns:removeProductToCartResponse"/>
+</operation>
+<operation name="login">
+<input wsam:Action="http://resource/WebEntw/loginRequest" message="tns:login"/>
+<output wsam:Action="http://resource/WebEntw/loginResponse" message="tns:loginResponse"/>
+</operation>
 </portType>
 <binding name="WebEntwPortBinding" type="tns:WebEntw">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="hello">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="productWID">
 <soap:operation soapAction=""/>
 <input>
@@ -56,7 +77,43 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="validateCode">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="products">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="hello">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="removeProductToCart">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="login">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

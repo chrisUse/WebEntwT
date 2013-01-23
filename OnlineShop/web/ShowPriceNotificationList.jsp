@@ -40,8 +40,8 @@
                 <table>
                         <thead>
                             <tr> 
-                                <td align="right"><b>Artikel Name</b></td>
-                                <td align="right"><b>Artikel Preis</b></td>
+                                <td align="right"><b>Name</b></td>
+                                <td align="right"><b>Preis</b></td>
                                 <td><b>Benachrichtigungslimit</b></td>
                             </tr>
                         </thead>

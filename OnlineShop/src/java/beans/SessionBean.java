@@ -66,6 +66,21 @@ public class SessionBean implements Serializable {
         return this.currentUser;
     }
     
+    public Integer loginWithWS() {
+        webservice.WebEntw_Service ws = new webservice.WebEntw_Service();
+        webservice.WebEntw wsp = ws.getWebEntwPort();
+        
+        Integer uid = wsp.login(this.mail, this.password);
+        
+        this.currentUser = uid;
+        if (uid != null) {
+            logout();
+        }
+        
+        
+        return uid;
+    }
+    
     public void logout() {
         this.mail = null;
         this.password = null;

@@ -13,27 +13,27 @@
             #{cartBean.initializeProduct(param['productID'])}  
                 <h:form id="form">        
                     <c:choose>
-                        <c:when test="#{!cartBean.isInCart(param['productID'])}">
-                            #{cartBean.addProduct(param['productID'])}
-                            <h1> Product is now in cart. </h1>
+                        <c:when test="#{!cartBean.isInCart(sessionBean.getCurrentUserID(), param['productID'])}">
+                            #{cartBean.addProduct(sessionBean.getCurrentUserID(), param['productID'])}
+                            <h1> #{msgs.ProductInCart} </h1>
                         </c:when>
                         <c:otherwise>
-                            <h1> Product is already in cart. </h1>
+                            <h1> #{msgs.ProductAlreadyInCart} </h1>
                         </c:otherwise>
                     </c:choose>
                     <h:panelGrid id="grid" columns="2">
 
-                        <h:outputText value="Name:" for="namelabel" />
+                        <h:outputText value="#{msgs.Name}:" for="namelabel" />
                         <h:outputText value="#{cartBean.name}" for="name" />
 
-                        <h:outputText value="Description:" for="descriptionlabel" />
+                        <h:outputText value="#{msgs.Description}:" for="descriptionlabel" />
                         <h:outputText value="#{cartBean.description}" for="description" />
 
-                        <h:outputText value="Price:" for="pricelabel" />
+                        <h:outputText value="#{msgs.Price}:" for="pricelabel" />
                         <h:outputText value="#{cartBean.price}" for="price" />
 
-                        <h:commandButton id="submit_cart" value="Show cart" action="showCart.jsp" />
-                        <h:commandButton id="submit_shop" value="Show shop" action="ViewProduct.jsp" />
+                        <h:commandButton id="submit_cart" value="#{msgs.ShowCart}" action="showCart.jsp" />
+                        <h:commandButton id="submit_shop" value="#{msgs.ShowShop}" action="ViewProduct.jsp" />
                     </h:panelGrid>
                     <h:messages errorStyle="color:red" />
                 </h:form>

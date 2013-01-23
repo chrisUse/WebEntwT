@@ -4,6 +4,8 @@
  */
 package resource;
 
+import data.Storage;
+import data.User;
 import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -32,5 +34,38 @@ public class WebEntw {
     @WebMethod(operationName = "productWID") // the name product are a problem
     public data.Product product(@WebParam(name="id") int id) {
         return data.Storage.getInstance().getProductById(id);
+    }
+
+    /**
+     * Web service operation "login"
+     */
+    @WebMethod(operationName = "login")
+    public Integer login(@WebParam(name = "identifier") String identifier, @WebParam(name = "password") String password) {
+        Integer uid = Storage.getInstance().getUserIdByMail(identifier);
+        Integer currentUser;
+        if (uid == null || !Storage.getInstance().getUserById(uid).getPassword().equals(password)) {
+            currentUser = null;
+        } else {
+            currentUser = uid;
+        }
+        
+        return currentUser;
+    }
+    
+    @WebMethod(operationName = "removeProductToCart")
+    public boolean removeProductToCart(@WebParam(name = "userId") int userId, @WebParam(name = "productId") int productId)
+    {
+        User tCurrentU      = Storage.getInstance().getUserById(userId);
+
+        return tCurrentU.getCart().removeProduct(productId);
+    }
+    
+    @WebMethod(operationName = "validateCode")
+    public String validateCode(@WebParam(name = "couponCode") String couponCode) {
+        if( data.Storage.getInstance().getCouponByCode(couponCode)){
+            data.Storage.getInstance().deleteCouponByCode(couponCode);
+            return "CouponAccept.jsp";
+        }
+        return "CouponDenied.jsp";
     }
 }

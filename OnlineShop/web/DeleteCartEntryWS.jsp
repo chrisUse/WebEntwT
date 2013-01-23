@@ -1,7 +1,7 @@
 <%-- 
-    Document   : DeleteCartEntry
-    Created on : Nov 29, 2012, 11:29:17 PM
-    Author     : Danny
+    Document   : DeleteCartEntryWS
+    Created on : 22.01.2013, 23:38:27
+    Author     : SKiD
 --%>
 
 <jsp:useBean id="sessionBean" class="beans.SessionBean" scope="session"/>
@@ -13,7 +13,7 @@
 <%
     int  tUserID        = sessionBean.getCurrentUserID(); 
     int  tProductID     = Integer.parseInt(request.getParameter("productID"));
-    boolean tRemoved    = cartBean.removeProduct(tUserID, tProductID);
+    boolean tRemoved    = cartBean.removeProductWS(tUserID, tProductID);
     response.sendRedirect("showCart.jsp?removed="+tRemoved+"&userID="+tUserID);
 %>
 
@@ -22,8 +22,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>remove cart entry</title>
+        <title>JSP Page</title>
     </head>
     <body>
+        <h1>Hello World!</h1>
     </body>
 </html>

@@ -75,7 +75,8 @@ public class User extends StorageData {
     }
 
     public Cart getCart() {
-        return new Cart(cart);
+        //return new Cart(cart);
+        return cart;
     }
 
     public boolean isIsAdmin() {

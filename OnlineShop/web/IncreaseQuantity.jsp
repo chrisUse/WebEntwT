@@ -11,13 +11,10 @@
 <%@page import="data.User"%>
 <%@page import="data.Storage"%>
 <%
-    int  tUserID        = sessionBean.getCurrentUserID(); //Integer.parseInt(request.getParameter("userID")); 
+    int  tUserID        = sessionBean.getCurrentUserID(); 
     int  tProductID     = Integer.parseInt(request.getParameter("productID"));
     User tCurrentUser   = Storage.getInstance().getUserById(tUserID);
-    //Cart tCart          = tCurrentUser.getCart();
-    cartBean.increaseQuantity(tProductID);
-    //tCurrentUser.setCart(tCart);
-    //Storage.getInstance().setUser(tCurrentUser);
+    cartBean.increaseQuantity(tUserID, tProductID);
     response.sendRedirect("showCart.jsp?&userID="+tUserID);
 %>
 

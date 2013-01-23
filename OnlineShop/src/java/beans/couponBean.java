@@ -35,4 +35,11 @@ public class couponBean {
         }
         return "CouponDenied.jsp";
     }
+    
+    public String validateCodeWithWS() {
+        webservice.WebEntw_Service ws = new webservice.WebEntw_Service();
+        webservice.WebEntw wsp = ws.getWebEntwPort();
+        
+        return wsp.validateCode(couponCode);
+    }
 }

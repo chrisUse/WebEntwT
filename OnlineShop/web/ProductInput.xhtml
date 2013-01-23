@@ -14,13 +14,13 @@
       <f:ajax event="valueChange" render="checkName"/>
     </h:inputText>
     <h:outputText id="checkName" value="#{caseProduct.checkNameSet()}" />
+    <!-- <h:outputText id="checkName" value="" /> -->
 
-    <!-- Price validator for calc the input price with the € or $ in € -->
     <h:outputLabel value="#{msgs.Price}" for="price"/>
-    <h:inputText id="price" size="30" maxlength="40" required="true" value="#{caseProduct.price}"  >
+    <h:inputText id="price" size="30" maxlength="40" required="true" value="#{caseProduct.priceString}"  >
       <!-- <f:validateDoubleRange  minimum="0" /> -->
       <!-- <f:validateRegex pattern="[-+]?[0-9]*\.[0-9]*?" /> -->
-      <f:validator validatorId="calculatePriceValidator" />
+      <!-- ### <f:validator validatorId="calculatePriceValidator" /> -->
     </h:inputText>
     <h:outputText id="checkPrice" value=""/>
 
