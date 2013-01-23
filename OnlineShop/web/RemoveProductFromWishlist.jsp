@@ -14,6 +14,7 @@
 
     try{
         wishlistBean.removeProduct(sessionBean.getCurrentUserID(), Integer.parseInt(request.getParameter("productID")));
+        //wishlistBean.removeProductWS(sessionBean.getCurrentUserID(), Integer.parseInt(request.getParameter("productID")));
     }
     catch(ProductDoesNotExistException ex){
         session.setAttribute("error", ex.getMessage());
