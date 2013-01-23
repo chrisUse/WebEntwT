@@ -49,6 +49,13 @@ public class CartBean
         return data.Storage.getInstance().getUserById(pID).getCart().removeProduct(pProductId);
     }
     
+    public boolean removeProductWS(int pId, int pProductId)
+    {
+        webservice.WebEntw_Service ws = new webservice.WebEntw_Service();
+        webservice.WebEntw wsp = ws.getWebEntwPort();
+        return wsp.removeProductToCart(pId, pProductId);
+    }
+    
     public boolean changeQuantity(int pID, int pProductId, int pQuantity)
     {
         return data.Storage.getInstance().getUserById(pID).getCart().changeQuantity(pProductId, pQuantity);
