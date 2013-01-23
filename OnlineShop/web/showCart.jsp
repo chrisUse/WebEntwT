@@ -83,6 +83,13 @@
                                     <input type="submit" value="Remove" />
                                 </form>
                             </td>
+                            <td>
+                                <form name="deleteCartEntry" action="DeleteCartEntryWS.jsp">
+                                    <input type="hidden" name="productID" value="<%= tProduct.getId() %>" />
+                                    <input type="hidden" name="userID" value="<%= tUserID%>" />
+                                    <input type="submit" value="Remove (WS)" />
+                                </form>
+                            </td>
                         <tr />
                     <% }    %>
                 </table>
