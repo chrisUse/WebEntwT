@@ -30,7 +30,7 @@ public class caseProduct {
     private String name;
     @NotNull
     private float price;
-    private String priceString;
+    //private String priceString;
     @NotNull
     private String description;
     @NotNull
@@ -136,12 +136,24 @@ public class caseProduct {
     }
 
     public String getPriceString() {
-        return String.valueOf(price); // priceString
+        return String.valueOf(price) + " €"; // priceString
     }
 
     public void setPriceString(String pS) {
-        this.priceString = pS;
-        this.price = Float.parseFloat(pS.split(" ")[0]);
+        this.price = 0;
+        //this.priceString = pS;
+        //this.price = Float.parseFloat(pS.split(" ")[0]);
+        if (!((String) pS).equals("")) {
+            String[] splitString = ((String) pS).split(" ");
+            if (splitString[1].equals("€")) {
+                this.price = Float.parseFloat(splitString[0]);
+            } else if (splitString[1].equals("$")) {
+                // Umrechnung Doller in Euro
+                this.price = Float.parseFloat(splitString[0]) * 0.75f;
+            } else {
+                this.price = Float.parseFloat(splitString[0]);
+            }
+        }
     }
 
     public void setPrice(float price) {

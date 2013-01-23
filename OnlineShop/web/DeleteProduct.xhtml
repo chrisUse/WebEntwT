@@ -16,9 +16,10 @@
           #{caseProduct.loadProductByID(param['productID'])}
 
           <h:form id="form">
-            <h:panelGrid id="grid" columns="2">
+            <h:panelGrid id="grid" columns="3">
               <h:outputLabel value="" for="addProductID"/>
               <h:inputHidden id="addProductID" value="#{caseProduct.addProductID}"/>
+              <h:outputText value="" for="checkProductID"/>
 
               <ui:include src="ProductInput.xhtml" />
 
