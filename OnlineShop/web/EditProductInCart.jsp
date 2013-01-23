@@ -21,17 +21,22 @@
         
     int tProductID      = Integer.parseInt(request.getParameter("productID"));
     int tUserID         = Integer.parseInt(request.getParameter("userID"));
+    boolean tToSmall    = Boolean.parseBoolean(request.getParameter("valueToSmall"));
 %>
 
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
         <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
         <title>Edit Product in Cart</title>
     </head>
     <body>
+        <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        
         <div>
             <jsp:include page="/templates/header.xhtml" />
             <jsp:include page="/templates/menu.jsp" />
@@ -46,22 +51,22 @@
                     <tr>
                         <td><% out.print(tProduct.getName()); %></td>
                     </tr>
-                    <tr><td>&nbsp;</td></tr>
+                    <tr><td></td></tr>
                     <tr><td>Description:</td></tr>
                     <tr>
                         <td><% out.print(tProduct.getDescription()); %></td>
                     </tr>
-                    <tr><td>&nbsp;</td></tr>
+                    <tr><td></td></tr>
                     <tr><td>Price:</td></tr>
                     <tr>
                         <td><% out.print(tProduct.getPrice()); %>€</td>
                     </tr>
-                    <tr><td>&nbsp;</td></tr>
+                    <tr><td></td></tr>
                     <tr><td>Amount:</td></tr>
                     <tr>
                         <td><%= tQuantity %></td>
                     </tr>
-                    <tr><td>&nbsp;</td></tr>
+                    <tr><td></td></tr>
                     <tr>    
                         <td>
                             <form name="setQuantity" action="SetQuantity.jsp">
@@ -69,6 +74,14 @@
                                 <input type="hidden" name="productID" value="<%= tProduct.getId() %>" />
                                 <input type="text" name="quantity" value="<%= tQuantity %>" />
                                 <input type="hidden" name="userID" value="<%= tUserID %>" />
+                            <%
+                                if(tToSmall == true)
+                                {
+                                    %>
+                                        Please Enter value greater or equal 0
+                                    <%
+                                }
+                            %>
                             </form>
                         </td>
                     </tr>
@@ -81,7 +94,7 @@
                             </form>
                         </td>
                     </tr>
-                    <tr><td>&nbsp;</td></tr>
+                    <tr><td></td></tr>
                     <tr>
                         <td>
                             <form action="ViewProduct.jsp">
