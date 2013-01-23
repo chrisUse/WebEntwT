@@ -4,14 +4,10 @@
  */
 package beans;
 
-import com.sun.xml.internal.ws.api.client.WSPortInfo;
 import data.Product;
-import data.Storage;
 import exceptions.ProductAlreadyExistsException;
 import exceptions.ProductDoesNotExistException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.NoneScoped;
 import webservice.ProductDoesNotExistException_Exception;
