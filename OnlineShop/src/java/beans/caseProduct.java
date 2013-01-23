@@ -30,7 +30,7 @@ public class caseProduct {
     private String name;
     @NotNull
     private float price;
-    private String priceString;
+    //private String priceString;
     @NotNull
     private String description;
     @NotNull
@@ -136,10 +136,11 @@ public class caseProduct {
     }
 
     public String getPriceString() {
-        return String.valueOf(price); // priceString
+        return String.valueOf(price) + " €"; // priceString
     }
 
     public void setPriceString(String pS) {
+        this.price = 0;
         //this.priceString = pS;
         //this.price = Float.parseFloat(pS.split(" ")[0]);
         if (!((String) pS).equals("")) {
