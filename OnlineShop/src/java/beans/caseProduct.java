@@ -150,6 +150,8 @@ public class caseProduct {
             } else if (splitString[1].equals("$")) {
                 // Umrechnung Doller in Euro
                 this.price = Float.parseFloat(splitString[0]) * 0.75f;
+            } else {
+                this.price = Float.parseFloat(splitString[0]);
             }
         }
     }
