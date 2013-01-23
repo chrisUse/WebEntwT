@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <body>
+        <ui:composition template="templates/onlineshopTemplate.xhtml">
+            <ui:define name="content">
+                <h1>Filter</h1>
+                <h:form id="form">
+                    <table>
+                        <ui:repeat var="cat" value="#{search.filterCategories}">
+                            <tr>
+                                <td><h:outputLabel value="#{cat}"/></td>
+
+                                <td>
+                                    <h:selectOneMenu value="#{search.testFilter}">
+                                        <f:selectItem itemValue="" itemLabel=""/>
+                                        <f:selectItems value="#{search.getFilterByCategory(cat)}" />
+                                    </h:selectOneMenu>
+                                </td>
+                            </tr>
+                        </ui:repeat>
+                        <tr>
+                            <td>
+                                <h:commandButton value="Filter anwenden" action="#{search.setFilterAndSearch}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

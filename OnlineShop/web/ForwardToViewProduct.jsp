@@ -11,6 +11,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <% response.sendRedirect("ViewProduct.jsp?showAPartOfPro"); %>
+        <% response.sendRedirect("ViewProduct.jsp?showAPartOfProducts"); %>
     </body>
 </html>

@@ -1,9 +1,10 @@
-<%@page import="exceptions.ProductAlreadyExistsException"%>
-<%@page import="beans.WishlistBean"%>
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <%@page import="beans.caseProduct"%>
+<%@page import="data.Product"%>
+<%@page import="exceptions.ProductAlreadyExistsException"%>
+<%@page import="beans.WishlistBean"%>
 
 <% // Use of Bean needs a empty standard constructor %>
 <jsp:useBean id="caseProduct" class="beans.caseProduct" scope="page"/>
@@ -44,11 +45,14 @@
       
       
       List<data.Product> allShowedProducts;
-      if (request.getParameter("showAPartOfPro") != null) {
-        allShowedProducts = search.getProducts();
+      if (request.getParameter("showAPartOfProducts") != null) {
+        if(search.getProducts() != null)
+          allShowedProducts = search.getProducts();
+        else
+          allShowedProducts = new ArrayList<Product>();
       } else {
         allShowedProducts = caseProduct.getAllProducts();
-        //allShowedProducts = search.getProducts();
+        search.setProducts(allShowedProducts);
       }
     %>
 
@@ -94,7 +98,9 @@
             </tr>
             <% }%>
             <input type="submit" name="DeleteAllSelected" value="Delete all selected" />
-            <input type="submit" name="AddSelectedProductToWishlist" value="Add selected Products to wishlist" />
+            <% if(sessionBean.getCurrentUser() != null){ %>
+                <input type="submit" name="AddSelectedProductToWishlist" value="Add selected Products to wishlist" />
+            <% } %>
           </form>
         </table>
         <% if (sessionBean.getCurrentUser() != null && sessionBean.getCurrentUser().isIsAdmin() == true) {%>
