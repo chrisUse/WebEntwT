@@ -28,8 +28,8 @@ public class MenuBean {
         menuItems.add(new MenuItem("ShowWishlist.jsp", "Show Wishlist", MenuItemVisibility.REGISTRED_USERS_ONLY));
         menuItems.add(new MenuItem("ShowPriceNotificationList.jsp", "Show PriceNotificationList", MenuItemVisibility.REGISTRED_USERS_ONLY));
         menuItems.add(new MenuItem("CouponInput.xhtml", "Input Coupon Code", MenuItemVisibility.REGISTRED_USERS_ONLY));
-        //menuItems.add(new MenuItem("ShowWishlist.jsp", "Show Wishlist", MenuItemVisibility.EVERYONE));
         menuItems.add(new MenuItem("Search.xhtml", "Search", MenuItemVisibility.EVERYONE));
+        menuItems.add(new MenuItem("Filter.xhtml", "Filter", MenuItemVisibility.EVERYONE));
         menuItems.add(new MenuItem("showCart.jsp?userID=1", "Show Cart", MenuItemVisibility.REGISTRED_USERS_ONLY));
         menuItems.add(new MenuItem("Logout.jsp", "Abmelden", MenuItemVisibility.REGISTRED_USERS_ONLY));
     }
