@@ -24,9 +24,11 @@ public class CalculatePriceValidator implements Validator {
       if ( ! ((String) value).equals("") ) {
         String[] splitString = ((String) value).split(" ");
         // Check if the currency present
-        if ( splitString.length > 1 ) {
+        if ( splitString.length != 2 ) {
           FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Es wurde keine Währung angegeben.", null);
           throw new ValidatorException(fm);
+        } else {
+          value = splitString[1];
         }
       }/*
         if (Storage.getInstance().getUserIdByMail((String) value) != null) {

@@ -16,7 +16,7 @@
     <h:outputText id="checkName" value="#{caseProduct.checkNameSet()}" />
 
     <h:outputLabel value="#{msgs.Price}" for="price"/>
-    <h:inputText id="price" size="30" maxlength="40" required="true" value="#{caseProduct.price}"  >
+    <h:inputText id="price" size="30" maxlength="40" required="true" value="#{caseProduct.priceString}"  >
       <!-- <f:validateDoubleRange  minimum="0" /> -->
       <!-- <f:validateRegex pattern="[-+]?[0-9]*\.[0-9]*?" /> -->
       <f:validator validatorId="calculatePriceValidator" />
