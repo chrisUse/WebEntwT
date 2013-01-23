@@ -44,7 +44,7 @@ public class SessionBean implements Serializable {
         return this.currentUser == null ? null : Storage.getInstance().getUserById(this.currentUser);
     }
     
-    public int getCurrentUserID() {
+    public Integer getCurrentUserID() {
         return this.currentUser;
     }
     
@@ -72,11 +72,11 @@ public class SessionBean implements Serializable {
         
         Integer uid = wsp.login(this.mail, this.password);
         
-        this.currentUser = uid;
+        
         if (uid != null) {
             logout();
         }
-        
+        this.currentUser = uid;
         
         return uid;
     }
