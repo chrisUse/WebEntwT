@@ -102,8 +102,8 @@ public class caseProductTest {
   public void testGetAddProductID() {
     System.out.println("getAddProductID");
     caseProduct instance = new caseProduct();
-    instance.loadProductByID(1);
-    assertTrue(instance.getAddProductID() == 1);
+    instance.setAddProductID(6);
+    assertTrue(instance.getAddProductID() == 6);
   }
 
   /**
@@ -113,8 +113,8 @@ public class caseProductTest {
   public void testSetAddProductID() {
     System.out.println("setAddProductID");
     caseProduct instance = new caseProduct();
-    instance.setAddProductID(1);
-    assertTrue(instance.getAddProductID() == 1);
+    instance.setAddProductID(7);
+    assertTrue(instance.getAddProductID() == 7);
   }
 
   /**
