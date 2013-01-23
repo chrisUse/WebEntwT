@@ -29,9 +29,10 @@ public class PriceNotificationListBean {
         return data.Storage.getInstance().getUserById(userID).getPriceNotificationList().getPriceNotifications();
     }
     
+    /*
     public int getSize(int userID) {
         return data.Storage.getInstance().getUserById(userID).getPriceNotificationList().getPriceNotifications().size();
-    }
+    }*/
     
     public boolean addNotification(int userID, int productID, int notifyValue) throws PriceNotificationListException{
         if(data.Storage.getInstance().getProductById(productID) == null){
@@ -53,40 +54,6 @@ public class PriceNotificationListBean {
        // tProducts.add(data.Storage.getInstance().getProductById(productID));
     }
     
-    
-    public boolean removeProduct(int userID, int productID) throws ProductDoesNotExistException{
-        List<Product> tProducts = data.Storage.getInstance().getUserById(userID).getWishList().getProducts();
-        for(Product item : tProducts) {
-            if(item.getId() == productID)
-            {
-                tProducts.remove(item);
-                return data.Storage.getInstance().getUserById(userID).getWishList().setProducts(tProducts);
-            }
-        }
-        throw new ProductDoesNotExistException("pdne");
-    }
-    
-    
-    public boolean checkForValidProduct(int productID){
-        if(data.Storage.getInstance().getProductById(productID) == null)
-            return false;
-        return true;
-    }
-    
-    public void removeInvalidProducts(int userID){
-        /*List<Product> tProducts = getProducts(userID);
-        for(data.Product item : tProducts){
-            int tID = item.getId();
-            if(!checkForValidProduct(tID)){
-                try{
-                    removeProduct(userID, tID);
-                }
-                catch(ProductDoesNotExistException ex){}
-            }
-        }*/
-    }
-    
-
     public boolean contains(int userID, int productID) {
         for(data.PriceNotification item : data.Storage.getInstance().getUserById(userID).getPriceNotificationList().getPriceNotifications()) {
             if(item.getProductID() == productID){

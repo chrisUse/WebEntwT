@@ -11,7 +11,6 @@ import java.util.*;
  */
 public class PriceNotificationList {
     private List<PriceNotification> priceNotifications = new ArrayList<PriceNotification>();
-    //PriceNotification pNotify;
     
     public PriceNotificationList(){
         
@@ -29,19 +28,6 @@ public class PriceNotificationList {
             clone.add(new PriceNotification(item));
         }
         return clone;
-    }
-    
-    public boolean updateNotification(int productID, int price){
-        if(!priceNotifications.isEmpty()){
-      
-            for (PriceNotification item:priceNotifications){
-                if(item.getProductID() == productID) {
-                    item.setPrice(price);
-                    return true;
-                }
-            }
-        }
-        return false;
     }
     
     public boolean removeNotification(PriceNotification pNotify){
