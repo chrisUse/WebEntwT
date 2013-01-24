@@ -39,6 +39,14 @@ public class Storage {
                 "admin@example.com",
                 "Admin Street",
                 "Admin Town"));
+        
+        addUser(new User(
+                false,
+                "User",
+                "password",
+                "user@example.com",
+                "User Street",
+                "User Town"));
 
         //add some products
         addProduct(new Product(
