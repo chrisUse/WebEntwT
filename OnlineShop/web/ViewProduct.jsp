@@ -102,7 +102,9 @@
                         </tr>
                         <% }
                             }%>
+                        <% if (sessionBean.getCurrentUser() != null && sessionBean.getCurrentUser().isIsAdmin() == true) {%>
                         <input type="submit" name="DeleteAllSelected" value="Delete all selected" />
+                        <% } %>
                         <% if (sessionBean.getCurrentUser() != null) {%>
                         <input type="submit" name="AddSelectedProductToWishlist" value="Add selected Products to wishlist" />
                         <% }%>
