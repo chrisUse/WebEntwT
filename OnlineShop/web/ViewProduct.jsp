@@ -74,7 +74,7 @@
                     <form name="outerForm" action="ViewProduct.jsp" method="post">
                         <% //counter = 1; %>
                         <% if (allShowedProducts != null)
-                    for (data.Product product : allShowedProducts) {%>
+                                for (data.Product product : allShowedProducts) {%>
                         <tr>
                             <td><input name="checked" type="checkbox" value="<%=product.getId()%>"/></td>
                             <td><%=product.getId()%></td>
@@ -89,7 +89,7 @@
                                     <option value="AddProductToCart.xhtml?productID=<%=product.getId()%>"> add to cart </option>
                                     <option value="AddProductToPriceNotificationList.jsp?productID=<%=product.getId()%>"> add to Pricenotificationlist </option>
                                     <option value="ProductDetails.jsp?productID=<%=product.getId()%>"> view product details </option>
-                                    
+
                                     <% if (sessionBean.getCurrentUser() != null && sessionBean.getCurrentUser().isIsAdmin() == true) {%>
                                     <option value="EditProduct.xhtml?productID=<%=product.getId()%>"> Edit </option>
                                     <option value="DeleteProduct.xhtml?productID=<%=product.getId()%>"> Delete </option>

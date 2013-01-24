@@ -15,7 +15,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.validation.constraints.*;
+//import javax.validation.constraints.*;
 
 /**
  * (name = "caseProduct1")
@@ -26,14 +26,14 @@ import javax.validation.constraints.*;
 @RequestScoped
 public class caseProduct {
 
-    @NotNull
+    //@NotNull
     private String name;
-    @NotNull
+    //@NotNull
     private float price;
     //private String priceString;
-    @NotNull
+    //@NotNull
     private String description;
-    @NotNull
+    //@NotNull
     private String manufacturer;
     private int addProductID;
     private Product selectedProduct;
