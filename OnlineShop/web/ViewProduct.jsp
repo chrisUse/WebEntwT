@@ -73,7 +73,7 @@
 
                     <form name="outerForm" action="ViewProduct.jsp" method="post">
                         <% //counter = 1; %>
-                        <% if (allShowedProducts != null)
+                        <% if (allShowedProducts != null) {
                                 for (data.Product product : allShowedProducts) {%>
                         <tr>
                             <td><input name="checked" type="checkbox" value="<%=product.getId()%>"/></td>
@@ -100,7 +100,8 @@
                                 <!--  </form> -->
                             </td>
                         </tr>
-                        <% }%>
+                        <% }
+                            }%>
                         <input type="submit" name="DeleteAllSelected" value="Delete all selected" />
                         <% if (sessionBean.getCurrentUser() != null) {%>
                         <input type="submit" name="AddSelectedProductToWishlist" value="Add selected Products to wishlist" />
@@ -110,6 +111,10 @@
                 <% if (sessionBean.getCurrentUser() != null && sessionBean.getCurrentUser().isIsAdmin() == true) {%>
                 <a href="AddNewProduct.xhtml">Add Product (JSF)</a>
                 <% }%>
+
+                <% if (allShowedProducts.isEmpty()) {%>
+                <h1> Keine Produkte Vorhanden </h1>
+                <%  }%>
             </div>
         </div>
     </body>
