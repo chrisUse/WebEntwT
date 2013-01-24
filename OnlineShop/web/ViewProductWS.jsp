@@ -46,18 +46,18 @@
                     }
                 }
             }/* else if (request.getParameter("AddSelectedProductToWishlist") != null) {
-                // all selected items request.getParameterValues("checked")
-            }*/
+             // all selected items request.getParameterValues("checked")
+             }*/
 
 
             List<webservice.Product> allShowedProducts;
             /*if (request.getParameter("showAPartOfPro") != null) {
-                ///TODO: change the bean
-                allShowedProducts = null;
-            } else {*/
-                allShowedProducts = caseProduct.getAllProductsWS();
+             ///TODO: change the bean
+             allShowedProducts = null;
+             } else {*/
+            allShowedProducts = caseProduct.getAllProductsWS();
             //}
-        %>
+%>
 
         <div>
             <jsp:include page="/templates/header.xhtml" />
@@ -75,7 +75,7 @@
                     <form name="outerForm" action="ViewProductWS.jsp" method="post">
                         <% //counter = 1; %>
                         <% if (allShowedProducts != null)
-                    for (webservice.Product product : allShowedProducts) {%>
+                                for (webservice.Product product : allShowedProducts) {%>
                         <tr>
                             <td><input name="checked" type="checkbox" value="<%=product.getId()%>"/></td>
                             <td><%=product.getId()%></td>
@@ -87,8 +87,11 @@
                                 <!-- <form name="form"> -->
                                 <select name="link" SIZE="1" onchange="window.location.href=this.value;">
                                     <option value="AddProductToWishlist.jsp?productID=<%=product.getId()%>"> add to wishlist </option>
-                                    <option value="AddProductToCart.xhtml?productID=<%=product.getId()%>"> add to cart </option>
                                     <option value="AddProductToPriceNotificationList.jsp?productID=<%=product.getId()%>"> add to Pricenotificationlist </option>
+
+                                    <% if (sessionBean.getCurrentUser() != null) {%>
+                                    <option value="AddProductToCart.xhtml?productID=<%=product.getId()%>"> add to cart </option>
+                                    <% }%>
 
                                     <% if (sessionBean.getCurrentUser() != null && sessionBean.getCurrentUser().isIsAdmin() == true) {%>
                                     <option value="EditProduct.xhtml?productID=<%=product.getId()%>"> Edit </option>
@@ -101,7 +104,11 @@
                             </td>
                         </tr>
                         <% }%>
+                        
+                        <% if (sessionBean.getCurrentUser() != null && sessionBean.getCurrentUser().isIsAdmin() == true) {%>
                         <input type="submit" name="DeleteAllSelected" value="Delete all selected" />
+                        <% }%>
+
                         <!--<input type="submit" name="AddSelectedProductToWishlist" value="Add selected Products to wishlist" />-->
                     </form>
                 </table>
