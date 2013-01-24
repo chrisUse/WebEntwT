@@ -145,12 +145,17 @@ public class caseProduct {
         //this.price = Float.parseFloat(pS.split(" ")[0]);
         if (!((String) pS).equals("")) {
             String[] splitString = ((String) pS).split(" ");
-            if (splitString[1].equals("€")) {
-                this.price = Float.parseFloat(splitString[0]);
-            } else if (splitString[1].equals("$")) {
-                // Umrechnung Doller in Euro
-                this.price = Float.parseFloat(splitString[0]) * 0.75f;
+            if ( splitString.length > 1 ) {
+                if (splitString[1].equals("€")) {
+                    this.price = Float.parseFloat(splitString[0]);
+                } else if (splitString[1].equals("$")) {
+                    // Umrechnung Doller in Euro
+                    this.price = Float.parseFloat(splitString[0]) * 0.75f;
+                } else {
+                    this.price = Float.parseFloat(splitString[0]);
+                }
             } else {
+                // Keine Waehrung
                 this.price = Float.parseFloat(splitString[0]);
             }
         }
