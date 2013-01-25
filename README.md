@@ -22,13 +22,13 @@ Building and running
 Additional information
 ----------------------
 
-* Bilingual pages
+### Bilingual pages
 
- - New product 
- - Edit product
+- New product 
+- Edit product
 
-* Exceptions
+### Exceptions
 
- - When the project starts, a file not found exception is displayed (because the webservice is'nt running and it wants to refresh the WSDL)
- - When OnlineShop is built for the first time, there may appear a file not found exception sometimes, even if the webservice is running. If this is the case, just clean&build Onlineshop again and the error is gone.
+- When the project starts, a file not found exception is displayed (because the webservice is'nt running and it wants to refresh the WSDL)
+- When OnlineShop is built for the first time, there may appear a file not found exception sometimes, even if the webservice is running. If this is the case, just clean&build Onlineshop again and the error is gone.
 
