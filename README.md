@@ -1,6 +1,12 @@
 WebEntwT
 ========
 
+This is a project of web development (2012/13) for M.Sc. Media Processing and Interactive Services of the University of Applied Sciences Schmalkalden.
+It can also be obtained at [GitHub](https://github.com/chrisUse/WebEntwT "Project at GitHub").
+
+Prerequisites
+-------------
+
 * use NetBeans
 * open all three projects in NetBeans
 
