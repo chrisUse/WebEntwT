@@ -10,9 +10,17 @@ Prerequisites
 * use NetBeans
 * open all three projects in NetBeans
 
-1. run WebService before you are running OnlineShop (OnlineShop needs to fetch the WSDL file from WebService to generate some sources)
-2. run OnlineShop
+Building and running
+--------------------
+
+1. clean, build and run WebService before you are running OnlineShop (OnlineShop needs to fetch the WSDL file from WebService to generate some sources)
+2. clean, build and run OnlineShop
 3. you are done
+
+
+
+Additional information
+----------------------
 
 * Bilingual pages
 
