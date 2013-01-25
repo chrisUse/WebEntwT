@@ -15,6 +15,6 @@ WebEntwT
 
 * Exceptions
 
- - When the project starts a file not found exception is displayed
- - When the first build is runing sometimes a file not found exception is displayed
+ - When the project starts a file not found exception is displayed (because the webservice is'nt running and it wants to refresh the WSDL)
+ - When the first build is runing sometimes a file not found exception is displayed even if the webservice is running. If this is the case, just clean&build Onlineshop again and the error is gone.
 
